@@ -1,4 +1,10 @@
 # 301-redirects fra det gamle WordPress-site (legaards.dk).
+/entreprenoer-aabenraa/  /nedrivning-aabenraa/  301
+/entreprenoer-aabenraa   /nedrivning-aabenraa/  301
+/entreprenoer-haderslev/  /nedrivning-haderslev/  301
+/entreprenoer-kolding/  /nedrivning-kolding/  301
+/entreprenoer-soenderborg/  /nedrivning-soenderborg/  301
+/entreprenoer-vojens/  /nedrivning-vojens/  301
 # Sider med samme URL (/nedbrydning/, /asbest/ osv.) behøver ingen redirect.
 /reference/isolering-af-tag-samt-vindue-opsaetning-og-lysindfald/  /cases/  301
 /reference/*          /cases/        301

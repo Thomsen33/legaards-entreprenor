@@ -1,81 +1,143 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-import ServiceCards from '../components/ServiceCards.astro';
 import PhotoGrid from '../components/PhotoGrid.astro';
 import Checklist from '../components/Checklist.astro';
+import Steps from '../components/Steps.astro';
 import Icon from '../components/Icon.astro';
+import CaseGrid from '../components/CaseGrid.astro';
 import Reviews from '../components/Reviews.astro';
+import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { cities, type City } from '../data/cities';
+import { cases } from '../data/cases';
 import { company } from '../data/site';
 
 export function getStaticPaths() {
   return cities.map((city) => ({ params: { slug: city.slug }, props: { city } }));
 }
 const { city } = Astro.props as { city: City };
-const crumbs = [{ name: `Entreprenør ${city.name}`, href: `/${city.slug}/` }];
+const crumbs = [{ name: 'Nedbrydning', href: '/nedbrydning/' }, { name: `Nedrivning ${city.name}`, href: `/${city.slug}/` }];
+const localCases = cases.filter((c) => city.caseSlugs.includes(c.slug));
+const nearbyText = `${city.nearby.slice(0, -1).join(', ')} og ${city.nearby.at(-1)}`;
+
+const types = [
+  { icon: 'building', t: 'Huse og villaer', d: 'Parcelhuse, rækkehuse og ældre villaer – også på trange grunde.' },
+  { icon: 'leaf', t: 'Landbrug', d: 'Stuehuse, lader, stalde, siloer og maskinhuse.' },
+  { icon: 'building', t: 'Sommerhuse', d: 'Også stormflodsskadede huse tæt på vandet.' },
+  { icon: 'layers', t: 'Erhverv og industri', d: 'Haller, værksteder og erhvervsgrunde – også over 250 m².' },
+];
+
+const localFaq = [
+  {
+    q: `Skal jeg søge nedrivningstilladelse i ${city.kommune}?`,
+    a: `Som udgangspunkt ja – nedrivning kræver tilladelse fra ${city.kommune}. Mindre sekundære bygninger som garager, carporte og udhuse på højst 50 m² kan som regel rives ned uden tilladelse, men det er kommunen, der afgør det. Giver arbejdet 1 ton affald eller mere, skal affaldet også anmeldes til kommunen senest 2 uger før start. Vi hjælper gerne med at finde ud af, hvad der gælder.`,
+  },
+  {
+    q: `Hvad koster nedrivning af et hus i ${city.name}?`,
+    a: 'Prisen afhænger især af bygningens størrelse og konstruktion, om der skal saneres for asbest, PCB eller bly, fundamenter og kældre, adgangsforholdene på grunden og hvor meget der kan genbruges. Ring eller send os et par billeder, så giver vi en pris på netop din opgave.',
+  },
+  {
+    q: `Hvor hurtigt kan I starte i ${city.name}?`,
+    a: `${city.distance} Den reelle opstart afhænger af tilladelser, anmeldelse til kommunen og eventuel sanering – du får en tidsplan sammen med tilbuddet.`,
+  },
+  {
+    q: 'Må I rive bygninger over 250 m² ned?',
+    a: 'Ja. Siden 1. juli 2025 skal bygninger på 250 m² eller mere rives selektivt ned af en autoriseret nedrivningsvirksomhed. Legaards er autoriseret, så vi kan også tage de store erhvervs- og landbrugsbygninger.',
+  },
+];
+
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  serviceType: 'Nedrivning, asbestsanering, miljøscreening og anlæg',
+  name: `Nedrivning i ${city.name}`,
+  serviceType: 'Nedrivning og nedbrydning af bygninger',
   provider: { '@id': 'https://legaards.dk/#firma' },
-  areaServed: { '@type': 'City', name: city.name },
+  areaServed: [{ '@type': 'City', name: city.name }, ...city.nearby.map((n) => ({ '@type': 'Place', name: n }))],
 };
 ---
 <Base title={city.title} description={city.description} image={city.image} breadcrumbs={crumbs} schema={[serviceSchema]}>
-  <PageHero title={`Entreprenør ${city.name}`} accent="nedbrydning, asbest og anlæg" lead={city.intro} image={city.image} crumbs={crumbs} />
+  <PageHero title={`Nedrivning i ${city.name}`} accent="huse, landbrug og erhverv" lead={city.intro} image={city.image} crumbs={crumbs} />
 
   <section class="section">
     <div class="container split">
       <div class="reveal">
-        <span class="eyebrow">Lokal entreprenør</span>
-        <h2>Entreprenør i {city.name}</h2>
+        <span class="eyebrow">Nedrivning i {city.name} og omegn</span>
+        <h2>Din lokale partner <span class="accent-text">til nedrivning</span></h2>
         <p>{city.local}</p>
-        <p>Vi dækker {city.name} og omegn – bl.a. {city.nearby.slice(0, -1).join(', ')} og {city.nearby.at(-1)}.</p>
-        <Checklist items={['Nedrivning og selektiv nedbrydning', 'Asbestscreening og -sanering', 'Miljørapport før nedrivning', 'Anlæg og jordarbejde', 'Genbrug af materialer', 'Én fast kontaktperson']} />
-      </div>
-      <div class="reveal reveal-d1">
-        <PhotoGrid group={`by-${city.slug}`} images={[
-          { src: city.image, alt: `Opgave udført af Legaards` },
-          { src: 'maskine-sorteringsgrab', alt: 'Gravemaskine med sorteringsgrab' },
-          { src: 'anlaeg-sandlevering', alt: 'Anlægsarbejde' },
-          { src: 'asbest-tag-udsugning', alt: 'Asbestsanering af tag' },
-        ].filter((v, i, a) => a.findIndex((x) => x.src === v.src) === i).slice(0, 4)} />
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Ydelser i {city.name}</span>
-        <h2>Det hjælper vi med</h2>
-        <p>Alle opgaver er forskellige. Kontakt {company.contactPerson}, så finder vi en fleksibel løsning.</p>
-      </div>
-      <ServiceCards />
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container split">
-      <div class="reveal">
-        <span class="eyebrow">Hvorfor Legaards</span>
-        <h2>Tæt på – <span class="accent-inline">og klar til at hjælpe</span></h2>
-        <p>Vi har base på {company.street} ved {company.city} og egen maskinpark med gravemaskiner fra {company.machinesTons}. Det giver kort vej til {city.name} og hurtig opstart.</p>
+        <p>Vi river ned i hele {city.kommune} – bl.a. i {nearbyText}.</p>
+        <Checklist items={[
+          'Hjælp med tilladelse og anmeldelse',
+          'Miljøscreening før nedrivning',
+          'Autoriseret asbestsanering',
+          'Autoriseret selektiv nedrivning',
+          'Sortering og genbrug af materialer',
+          'Udgravning og sandpude bagefter',
+        ]} />
         <div class="hero-actions">
           <a class="btn btn-accent" href="/indhent-tilbud/">Få et tilbud</a>
           <a class="btn btn-outline" href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
         </div>
       </div>
-      <div class="stat-card reveal reveal-d1">
-        <h3>Ring til Christian</h3>
-        <a class="big" href={company.phoneHref}>{company.phone}</a>
-        <p style="color:hsl(210 20% 85%);margin:0">Uforpligtende snak om din opgave i {city.name}.</p>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group={`by-${city.slug}`} images={city.images} />
       </div>
     </div>
   </section>
 
-  <div class="section-alt"><Reviews /></div>
-  <CtaBand title={`Har du en opgave i ${city.name}?`} />
+  <section class="section section-alt">
+    <div class="container split" style="align-items:start">
+      <div class="reveal">
+        <span class="eyebrow">Lokale opgaver</span>
+        <h2>Vi har bl.a. løst</h2>
+        <p style="color:var(--muted-fg)">Et udpluk af de opgaver, vi har løst i og omkring {city.name}:</p>
+        <Checklist single items={city.jobs} />
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="tiles" style="grid-template-columns:1fr 1fr">
+          {types.map((x) => (
+            <div class="tile"><span class="icon-badge"><Icon name={x.icon} /></span><h3>{x.t}</h3><p>{x.d}</p></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sådan foregår det</span>
+        <h2>Nedrivning i {city.name} – trin for trin</h2>
+      </div>
+      <Steps steps={[
+        { title: 'Besigtigelse', text: `Vi kommer ud i ${city.name} og gennemgår bygningen.` },
+        { title: 'Screening', text: 'Bygningen screenes for asbest, PCB, bly og andre stoffer.' },
+        { title: 'Sanering', text: 'Miljøfarlige materialer fjernes, før nedrivningen går i gang.' },
+        { title: 'Nedrivning', text: 'Moderne maskiner og erfarne folk river ned.' },
+        { title: 'Sortering', text: 'Beton og tegl knuses og genbruges – grunden efterlades ryddet.' },
+      ]} />
+    </div>
+  </section>
+
+  {localCases.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Case fra {city.name}</span><h2>Se en af vores opgaver</h2></div>
+        <CaseGrid cases={localCases} />
+      </div>
+    </section>
+  )}
+
+  <Faq items={localFaq} title={`Spørgsmål om nedrivning i ${city.name}`} />
+
+  <section class="section section-alt" style="padding-block:56px">
+    <div class="container">
+      <p style="text-align:center;margin:0;color:var(--muted-fg)">
+        Vi hjælper også med <a href="/asbest/">asbestsanering</a>, <a href="/miljoerapport/">miljørapport</a>, <a href="/anlaeg/">anlæg og sandpuder</a> og <a href="/koeb-materialer/">knuste materialer</a> i {city.name}.
+      </p>
+    </div>
+  </section>
+
+  <Reviews />
+  <CtaBand title={`Skal der rives ned i ${city.name}?`} text={`Ring til ${company.contactPerson} for en uforpligtende snak og et tilbud på din nedrivning.`} />
 </Base>
