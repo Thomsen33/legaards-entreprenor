@@ -11,6 +11,7 @@ import CaseGrid from '../components/CaseGrid.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { company } from '../data/site';
 import { cases } from '../data/cases';
+import { cities } from '../data/cities';
 
 const crumbs = [{ name: 'Nedbrydning', href: '/nedbrydning/' }];
 const types = [
@@ -120,6 +121,15 @@ const types = [
     <div class="container">
       <div class="section-head reveal"><span class="eyebrow">Cases</span><h2>Udvalgte nedrivningsopgaver</h2></div>
       <CaseGrid cases={cases.filter((c) => c.category === 'Nedbrydning')} />
+    </div>
+  </section>
+
+  <section class="section" style="padding-block:clamp(48px,6vw,72px)">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom:28px"><span class="eyebrow">Hele Syddanmark</span><h2>Nedrivning i dit område</h2></div>
+      <div class="filters reveal" style="margin:0">
+        {cities.map((c) => <a class="btn btn-outline btn-sm" href={`/${c.slug}/`}>Nedrivning {c.name}</a>)}
+      </div>
     </div>
   </section>
 

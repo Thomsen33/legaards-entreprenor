@@ -16,11 +16,14 @@ export type City = {
   caseSlugs: string[];
   image: string;
   images: { src: string; alt: string }[];
+  footer?: boolean; // vises i footeren (de 5 største byer)
+  review?: string; // navn på en anmeldelse fra site.ts, der vises på siden
 };
 
 export const cities: City[] = [
   {
     slug: 'nedrivning-kolding',
+    footer: true,
     name: 'Kolding',
     kommune: 'Kolding Kommune',
     title: 'Nedrivning i Kolding – huse, sommerhuse, erhverv',
@@ -48,6 +51,7 @@ export const cities: City[] = [
   },
   {
     slug: 'nedrivning-haderslev',
+    footer: true,
     name: 'Haderslev',
     kommune: 'Haderslev Kommune',
     title: 'Nedrivning i Haderslev – nedbrydning og sanering',
@@ -99,6 +103,7 @@ export const cities: City[] = [
   },
   {
     slug: 'nedrivning-soenderborg',
+    footer: true,
     name: 'Sønderborg',
     kommune: 'Sønderborg Kommune',
     title: 'Nedrivning i Sønderborg – huse og sommerhuse',
@@ -144,6 +149,81 @@ export const cities: City[] = [
       { src: 'nedbrydning-stald-tag', alt: 'Stald under nedrivning' },
       { src: 'plads-oversigt', alt: 'Legaards plads ved Vojens' },
       { src: 'plads-knuser-gravemaskine', alt: 'Knusning af beton på pladsen' },
+    ],
+  },
+  {
+    slug: 'nedrivning-fredericia',
+    footer: true,
+    name: 'Fredericia',
+    kommune: 'Fredericia Kommune',
+    title: 'Nedrivning i Fredericia – huse, garager og erhverv',
+    description: 'Nedrivning og miljøsanering i Fredericia: huse, tilbygninger, garager og erhverv. Materialer genbruges – også i dit nye hus. Ring til Legaards på 24 78 84 10.',
+    nearby: ['Erritsø', 'Taulov', 'Skærbæk', 'Pjedsted', 'Egeskov'],
+    intro: 'Skal et ældre hus i Fredericia rives ned for at give plads til noget nyt? Vi miljøsanerer, river ned og sorterer materialerne – og gemmer gerne noget af det gamle hus til det nye.',
+    local: 'I Fredericia har vi bl.a. miljøsaneret og nedrevet et hus med tilbygning og garage, som samme familie havde ejet, siden det blev opført i 1921. En del af de gamle mursten blev renset og gemt, så de kan indgå i indervæggene i familiens nye hus. Det er godt for miljøet – og en måde at bevare lidt af historien på.',
+    distance: 'Fredericia ligger i kort køreafstand fra vores plads ved Vojens.',
+    jobs: [
+      'Miljøsanering og nedrivning af hus, tilbygning og garage fra 1921 – med genbrug af murstenene i det nye hus',
+      'Hurtig nedbrydning af ældre hus på Luthersvej',
+      'Miljøsanering og nedrivning af huse i Fredericia og Christiansfeld',
+    ],
+    caseSlugs: [],
+    review: 'Gerhard Ettrup',
+    image: 'nedbrydning-mursten',
+    images: [
+      { src: 'nedbrydning-hus-tag', alt: 'Ældre murstenshus rives ned' },
+      { src: 'nedbrydning-mursten', alt: 'Mursten sorteres efter nedrivning' },
+      { src: 'nedbrydning-indvendig', alt: 'Indvendig strip før nedrivning' },
+      { src: 'bolig-efter-grund', alt: 'Ryddet grund klar til nyt hus' },
+    ],
+  },
+  {
+    slug: 'nedrivning-middelfart',
+    name: 'Middelfart',
+    kommune: 'Middelfart Kommune',
+    title: 'Nedrivning i Middelfart – huse og miljøsanering',
+    description: 'Nedrivning og miljøsanering i Middelfart og Strib – for private og for Middelfart Kommune. Huse, bundopbygning og oprydning. Få et uforpligtende tilbud.',
+    nearby: ['Strib', 'Nørre Aaby', 'Ejby', 'Gelsted', 'Brenderup'],
+    intro: 'Lige på den anden side af Lillebælt river vi huse ned og miljøsanerer i hele Middelfart Kommune – for både private bygherrer og kommunen selv.',
+    local: 'For Middelfart Kommune har vi løst en lidt anderledes opgave: miljøsanering og fjernelse af en gammel togvogn på en børnehaves legeplads. I Middelfart har vi miljøsaneret og nedrevet et hus, så der blev plads til et nyt, og i Strib har vi nedrevet og saneret et hus og lavet bundopbygning til materialepladsen til nybyggeriet.',
+    distance: 'Middelfart ligger lige over Lillebæltsbroen – kort vej fra Trekantområdet og vores plads ved Vojens.',
+    jobs: [
+      'Miljøsanering og fjernelse af gammel togvogn i børnehave for Middelfart Kommune',
+      'Miljøsanering og nedrivning af hus i Middelfart, så der blev plads til et nyt',
+      'Nedrivning og miljøsanering af hus i Strib samt bundopbygning til materialeplads',
+    ],
+    caseSlugs: [],
+    image: 'bolig-foer-hus',
+    images: [
+      { src: 'bolig-foer-hus', alt: 'Hus før nedrivning' },
+      { src: 'nedbrydning-villa-stillads', alt: 'Hus klar til miljøsanering og nedrivning' },
+      { src: 'nedbrydning-grund-efter', alt: 'Grund planeres efter nedrivning' },
+      { src: 'anlaeg-sandpude', alt: 'Bundopbygning til nybyggeri' },
+    ],
+  },
+  {
+    slug: 'nedrivning-vejle',
+    footer: true,
+    name: 'Vejle',
+    kommune: 'Vejle Kommune',
+    title: 'Nedrivning i Vejle – huse, husmandssteder og landbrug',
+    description: 'Nedrivning og miljøsanering i Vejle og omegn: huse, husmandssteder, lader og stalde – med ny vej og indkørsel bagefter. Ring til Legaards på 24 78 84 10.',
+    nearby: ['Børkop', 'Jelling', 'Give', 'Egtved', 'Bredsten'],
+    intro: 'Skal et hus eller et ældre husmandssted i Vejle-området rives ned? Vi miljøsanerer, river ned og gør grunden klar – og kan lave ny vej og indkørsel bagefter.',
+    local: 'I Vejle har vi miljøsaneret og nedrevet et hus, og ved Vejle har vi nedbrudt og miljøsaneret et ældre husmandssted og efterfølgende anlagt ny vej og indkørsel. Mange ældre landejendomme har både stuehus, lader og stalde med asbesttage – derfor starter vi altid med en screening, så de farlige materialer fjernes forsvarligt først.',
+    distance: 'Vi kører fra Vojens til hele Vejle Kommune, og opgaverne planlægges, så maskinerne kun skal flyttes én gang.',
+    jobs: [
+      'Miljøsanering og nedrivning af hus i Vejle',
+      'Nedbrydning og miljøsanering af ældre husmandssted ved Vejle',
+      'Ny vej og indkørsel efter nedrivningen',
+    ],
+    caseSlugs: [],
+    image: 'case-landbrug-foer',
+    images: [
+      { src: 'case-landbrug-foer', alt: 'Nedrivning af ældre landejendom' },
+      { src: 'bolig-foer-eternit', alt: 'Hus med eternittag før nedrivning' },
+      { src: 'case-landbrug-ryddet', alt: 'Ryddet grund efter nedrivning' },
+      { src: 'case-markvej-vej', alt: 'Ny vej anlagt efter nedrivning' },
     ],
   },
 ];

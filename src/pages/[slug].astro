@@ -11,7 +11,7 @@ import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { cities, type City } from '../data/cities';
 import { cases } from '../data/cases';
-import { company } from '../data/site';
+import { company, reviews } from '../data/site';
 
 export function getStaticPaths() {
   return cities.map((city) => ({ params: { slug: city.slug }, props: { city } }));
@@ -19,6 +19,7 @@ export function getStaticPaths() {
 const { city } = Astro.props as { city: City };
 const crumbs = [{ name: 'Nedbrydning', href: '/nedbrydning/' }, { name: `Nedrivning ${city.name}`, href: `/${city.slug}/` }];
 const localCases = cases.filter((c) => city.caseSlugs.includes(c.slug));
+const localReview = city.review ? reviews.find((r) => r.name === city.review) : undefined;
 const nearbyText = `${city.nearby.slice(0, -1).join(', ')} og ${city.nearby.at(-1)}`;
 
 const types = [
@@ -124,6 +125,19 @@ const serviceSchema = {
       <div class="container">
         <div class="section-head reveal"><span class="eyebrow">Case fra {city.name}</span><h2>Se en af vores opgaver</h2></div>
         <CaseGrid cases={localCases} />
+      </div>
+    </section>
+  )}
+
+  {localReview && (
+    <section class="section" style="padding-block:clamp(48px,6vw,72px)">
+      <div class="container" style="max-width:820px">
+        <figure class="review reveal" style="margin:0;padding:34px">
+          <span class="stars">{[1, 2, 3, 4, 5].map(() => <Icon name="star" />)}</span>
+          <blockquote style="font-size:1.2rem">“{localReview.text}”</blockquote>
+          {localReview.sign && <p class="sign">{localReview.sign}</p>}
+          <figcaption><strong>{localReview.name}</strong> · Google-anmeldelse fra {city.name}</figcaption>
+        </figure>
       </div>
     </section>
   )}

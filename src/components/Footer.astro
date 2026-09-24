@@ -3,6 +3,9 @@ import Icon from './Icon.astro';
 import { company, services } from '../data/site';
 import { cities } from '../data/cities';
 const year = new Date().getFullYear();
+// De 5 største byer, sorteret efter størrelse
+const order = ['Kolding', 'Vejle', 'Fredericia', 'Sønderborg', 'Haderslev'];
+const footerCities = cities.filter((c) => c.footer).sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));
 ---
 <footer class="site-footer">
   <div class="container">
@@ -40,7 +43,7 @@ const year = new Date().getFullYear();
         </ul>
         <h3 style="margin-top:28px">Vi dækker</h3>
         <ul>
-          {cities.map((c) => <li><a href={`/${c.slug}/`}>Nedrivning {c.name}</a></li>)}
+          {footerCities.map((c) => <li><a href={`/${c.slug}/`}>Nedrivning {c.name}</a></li>)}
         </ul>
       </div>
     </div>
