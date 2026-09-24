@@ -33,7 +33,6 @@ export const services = [
   { label: 'Asbest', href: '/asbest/', desc: 'Screening og sanering af asbest' },
   { label: 'Miljørapport', href: '/miljoerapport/', desc: 'Miljøscreening før nedrivning' },
   { label: 'Anlæg', href: '/anlaeg/', desc: 'Jordarbejde, byggemodning og veje' },
-  { label: 'Genbrug', href: '/genbrug/', desc: 'Materialer der får nyt liv' },
 ];
 
 export const nav: NavItem[] = [
@@ -44,6 +43,7 @@ export const nav: NavItem[] = [
     children: [
       { label: 'Aflever materialer', href: '/modtagerplads/', desc: 'Modtagerplads for beton, tegl og jern' },
       { label: 'Køb materialer', href: '/koeb-materialer/', desc: 'Knust beton, tegl og blandede materialer' },
+      { label: 'Genbrug', href: '/genbrug/', desc: 'Materialer fra nedrivning der får nyt liv' },
     ],
   },
   { label: 'Galleri', href: '/galleri/' },
