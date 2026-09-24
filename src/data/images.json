@@ -589,5 +589,389 @@
 "sizes": [
 800
 ]
+},
+"maskine-knuser-transport": {
+"w": 960,
+"h": 720,
+"sizes": [
+800,
+1600
+]
+},
+"maskine-lastbil": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"maskine-laesser": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"maskine-laesser-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"maskine-blokvogn": {
+"w": 1152,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-maskiner": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-laesser-grus": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-sigte": {
+"w": 945,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-fra-laesser": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-knust-tegl-beton": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-bunke-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-markvej-vej": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-markvej-planering": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-markvej-planering-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-belaegning-hus": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-stald-tag": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-grund-efter": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"bolig-foer-garage": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"bolig-foer-sommerhus": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"bolig-foer-hus": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"bolig-foer-eternit": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"bolig-foer-sommerhus-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"bolig-efter-grund-vand": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"bolig-efter-grund": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"bolig-efter-grund-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-udgravning-skilt": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-institution-skilt": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-institution-foer": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-institution-foer-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-institution-nedrivning": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-erhvervsgrund-beton": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-erhvervsgrund-fundament": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-erhvervsgrund-udgravning": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-erhvervsgrund-oversigt": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-erhvervsgrund-jord": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-erhvervsgrund-ryddet": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-erhvervsgrund-ryddet-2": {
+"w": 1152,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-erhvervsgrund-fundament-2": {
+"w": 1152,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-lastning": {
+"w": 1179,
+"h": 1176,
+"sizes": [
+800,
+1600
+]
+},
+"salg-trailer": {
+"w": 945,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-koeleanlaeg": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-kompressorer": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-paneler": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-sandwichpaneler": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-betonplader-kran": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-container": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-isolering": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"salg-vinduesparti": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
 }
 }

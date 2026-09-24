@@ -7,6 +7,18 @@ import Checklist from '../components/Checklist.astro';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { company } from '../data/site';
+import { imgData } from '../lib/img';
+
+const salg = [
+  { src: 'salg-koeleanlaeg', t: 'Køleaggregater' },
+  { src: 'salg-kompressorer', t: 'Kompressorer' },
+  { src: 'salg-vinduesparti', t: 'Vinduer og døre' },
+  { src: 'salg-isolering', t: 'Isoleringsplader' },
+  { src: 'salg-paneler', t: 'Paneler og plader' },
+  { src: 'salg-container', t: 'Containere' },
+  { src: 'salg-betonplader-kran', t: 'Betonplader' },
+  { src: 'salg-lastning', t: 'Klar til afhentning' },
+];
 
 const crumbs = [{ name: 'Genbrugsplads', href: '/modtagerplads/' }, { name: 'Genbrug', href: '/genbrug/' }];
 ---
@@ -66,7 +78,31 @@ const crumbs = [{ name: 'Genbrugsplads', href: '/modtagerplads/' }, { name: 'Gen
     </div>
   </section>
 
+
   <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Fra genbrugssalget</span>
+        <h2>Eksempler på materialer, vi har solgt videre</h2>
+        <p>Fra køleanlæg og kompressorer til vinduer, isolering og containere. Udvalget skifter hele tiden – se det aktuelle på Facebook.</p>
+      </div>
+      <div class="grid grid-4 salg-grid">
+        {salg.map((x, i) => (
+          <figure class={`salg-item reveal reveal-d${i % 4}`}>
+            <button type="button" data-lightbox="genbrugssalg" data-full={imgData(x.src).full} data-caption={x.t} aria-label={`Vis stort: ${x.t}`}>
+              <Img name={x.src} alt={`${x.t} fra Legaards Genbrugs salg`} sizes="(max-width: 640px) 100vw, 25vw" />
+            </button>
+            <figcaption>{x.t}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <p style="text-align:center;margin-top:40px">
+        <a class="btn btn-outline" href={company.facebookGenbrug} target="_blank" rel="noopener"><Icon name="facebook" />Se hele udvalget på Facebook</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Genbrugspladsen</span>
