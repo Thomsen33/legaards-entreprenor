@@ -1,4 +1,6 @@
 ---
+import Faq from '../components/Faq.astro';
+import { faq } from '../data/faq';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import PhotoGrid from '../components/PhotoGrid.astro';
@@ -106,6 +108,16 @@ const where = [
       <CaseGrid cases={cases.filter((c) => c.category === 'Asbest')} />
     </div>
   </section>
+
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <div class="notice reveal">
+        <Icon name="hardhat" />
+        <p><strong>Er du tømrer eller entreprenør?</strong> Vi tager asbestdelen på dine opgaver, så du kan gå i gang med dit eget arbejde. <a href="/til-haandvaerkere/">Se hvordan vi samarbejder</a>.</p>
+      </div>
+    </div>
+  </section>
+  <Faq items={faq.asbest} />
 
   <CtaBand title="Mistanke om asbest?" text="Kontakt Christian Legaard – så finder vi ud af, hvad der skal til, og giver dig et fast tilbud." />
 </Base>

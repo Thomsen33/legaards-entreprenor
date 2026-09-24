@@ -12,7 +12,7 @@ const {
   defaultSubject = '',
   contacts = true,
 } = Astro.props;
-const subjects = ['Nedbrydning', 'Asbest', 'Miljørapport', 'Anlæg', 'Genbrug', 'Aflever materialer', 'Køb materialer', 'Andet'];
+const subjects = ['Nedbrydning', 'Asbest', 'Miljørapport', 'Anlæg', 'Genbrug', 'Aflever materialer', 'Køb materialer', 'Samarbejde (håndværker)', 'Andet'];
 const showSubject = subject && !compact;
 ---
 <form class="form" data-lead-form data-endpoint={ENDPOINT} data-mailto={company.email}>

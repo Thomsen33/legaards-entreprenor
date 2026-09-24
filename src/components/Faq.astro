@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+import type { Faq } from '../data/faq';
+interface Props { items: Faq[]; title?: string; intro?: string }
+const { items, title = 'Ofte stillede spørgsmål', intro } = Astro.props;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<section class="section">
+  <div class="container faq-wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>{title}</h2>
+      {intro && <p>{intro}</p>}
+    </div>
+    <div class="faq">
+      {items.map((f, i) => (
+        <details class={`faq-item reveal reveal-d${i % 3}`} open={i === 0}>
+          <summary><span>{f.q}</span><Icon name="chevronDown" /></summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</section>

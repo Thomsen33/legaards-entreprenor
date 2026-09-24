@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Checklist from '../components/Checklist.astro';
+import Steps from '../components/Steps.astro';
+import Icon from '../components/Icon.astro';
+import CaseGrid from '../components/CaseGrid.astro';
+import References from '../components/References.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Faq from '../components/Faq.astro';
+import { company } from '../data/site';
+import { cases } from '../data/cases';
+
+const crumbs = [{ name: 'For håndværkere', href: '/til-haandvaerkere/' }];
+const tasks = [
+  { icon: 'shield', t: 'Asbest før renovering', d: 'Vi saner tag, tagrum eller badeværelse, så du kan gå i gang med dit arbejde.' },
+  { icon: 'building', t: 'Nedrivning før nybyggeri', d: 'Vi river det gamle ned og sorterer materialerne – grunden står klar til dig.' },
+  { icon: 'layers', t: 'Indvendig nedbrydning', d: 'Vi stripper og bryder ned indvendigt, fx gulve, vægge og installationer, før ombygningen.' },
+  { icon: 'flask', t: 'Miljøsanering', d: 'Bly, PCB og asbest i vægge, fuger og maling fjernes forsvarligt, før du overtager.' },
+  { icon: 'shovel', t: 'Udgravning og sandpude', d: 'Udgravning, sandpude og terrænregulering, så støberen kan komme i gang.' },
+  { icon: 'truck', t: 'Materialer og modtagelse', d: 'Aflevér beton og tegl hos os – og køb knuste materialer til bundsikring.' },
+];
+const partnerFaq = [
+  { q: 'Hvorfor kan vi ikke selv fjerne asbesten?', a: 'Siden 1. januar 2025 må asbestholdige materialer som hovedregel kun nedrives af autoriserede virksomheder. Undtagelsen er kortvarigt arbejde af mindre omfang. Legaards er autoriseret, så du kan sende asbestdelen videre til os og koncentrere dig om dit eget fag.' },
+  { q: 'Kan I arbejde efter vores tidsplan?', a: 'Ja. Vi planlægger efter din opstart, så vi er ude af huset, når du skal ind. Ring til Christian, så finder vi en dato.' },
+  // TODO (Christian): bekræft fakturering
+  { q: 'Hvem fakturerer vi til?', a: 'Vi kan fakturere til dig som underentreprenør eller direkte til bygherren – det aftaler vi fra opgave til opgave.' },
+  { q: 'Får vi dokumentation til bygherren?', a: 'Ja. Du får dokumentation for sanering og korrekt bortskaffelse af affaldet, som du kan give videre til bygherren.' },
+];
+---
+<Base
+  title="For tømrere, murere og entreprenører – asbest og nedrivning"
+  description="Legaards tager asbest-, nedrivnings- og saneringsdelen for tømrere, murere og entreprenører i Syddanmark. Autoriseret, fleksibel og hurtig opstart. Ring 24 78 84 10."
+  image="asbest-tag-aabnet"
+  breadcrumbs={crumbs}
+>
+  <PageHero
+    title="For håndværkere"
+    accent="vi tager den beskidte del"
+    lead="Er du tømrer, murer, VVS'er eller entreprenør? Vi tager asbest, miljøsanering og nedrivning på dine opgaver – så du kan koncentrere dig om dit eget fag."
+    image="asbest-tag-udsugning"
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Din underentreprenør</span>
+        <h2>Én fast partner til <span class="accent-text">asbest og nedrivning</span></h2>
+        <p>Mange af vores opgaver løser vi for lokale tømrermestre og entreprenører. Når taget skal skiftes, badeværelset renoveres eller et hus rives ned før nybyggeri, tager vi den del af opgaven, der kræver autorisation og specialudstyr.</p>
+        <Checklist items={[
+          'Autoriseret til asbestarbejde',
+          'Autoriseret til selektiv nedrivning',
+          'Hurtig opstart efter din tidsplan',
+          'Dokumentation til bygherren',
+          `Egen maskinpark fra ${company.machinesTons}`,
+          'Én fast kontaktperson',
+        ]} />
+        <div class="hero-actions">
+          <a class="btn btn-accent" href={company.phoneHref}><Icon name="phone" />Ring til Christian</a>
+          <a class="btn btn-outline" href="#samarbejde">Send en forespørgsel</a>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="haandvaerkere" images={[
+          { src: 'asbest-tag-aabnet', alt: 'Asbestsanering af tag før tømrerarbejde' },
+          { src: 'asbest-fiberbinding', alt: 'Sanering af tagrum' },
+          { src: 'nedbrydning-indvendig', alt: 'Indvendig nedbrydning før ombygning' },
+          { src: 'anlaeg-sandpude', alt: 'Sandpude klar til støbning' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Det kan vi tage</span>
+        <h2>Typiske opgaver for håndværkere</h2>
+      </div>
+      <div class="tiles">
+        {tasks.map((x, i) => (
+          <div class={`tile reveal reveal-d${i % 3}`}><span class="icon-badge"><Icon name={x.icon} /></span><h3>{x.t}</h3><p>{x.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sådan samarbejder vi</span>
+        <h2>Fra opkald til overdragelse</h2>
+      </div>
+      <ol class="steps steps-4" style="list-style:none;padding:0;margin:0">
+        {[
+          { t: 'Du ringer', d: 'Fortæl om opgaven og din tidsplan – send gerne billeder.' },
+          { t: 'Vi giver pris', d: 'Du får en pris og en dato, der passer ind i din plan.' },
+          { t: 'Vi udfører', d: 'Vi saner, river ned eller graver ud – og rydder op efter os.' },
+          { t: 'Du overtager', d: 'Du får dokumentation til bygherren og kan gå i gang.' },
+        ].map((s, i) => (
+          <li class={`step reveal reveal-d${i}`}><span class="step-num">{i + 1}</span><h3>{s.t}</h3><p>{s.d}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">Eksempler</span><h2>Opgaver løst for håndværkere</h2></div>
+      <CaseGrid cases={cases.filter((c) => ['asbestsanering-tage-haderslev-jels', 'nedrivning-hus-fjordvej-kolding', 'elementer-fjernet-til-ny-port'].includes(c.slug))} />
+    </div>
+  </section>
+
+  <References alt title="Vi samarbejder med" intro="Kommuner, virksomheder og lokale håndværkere i hele Syddanmark." />
+
+  <Faq items={partnerFaq} title="Spørgsmål fra håndværkere" />
+
+  <section class="section section-alt" id="samarbejde">
+    <div class="container split" style="align-items:start">
+      <div class="reveal">
+        <span class="eyebrow">Samarbejde</span>
+        <h2>Har du en opgave, vi skal tage en del af?</h2>
+        <p>Skriv kort om opgaven, adressen og hvornår du skal i gang – så vender {company.contactPerson} hurtigt tilbage med pris og dato.</p>
+        <ul class="contact-list" style="margin-top:24px">
+          <li><span class="icon-badge"><Icon name="phone" /></span><div><strong>Direkte til Christian</strong><a href={company.phoneHref}>{company.phone}</a></div></li>
+          <li><span class="icon-badge"><Icon name="mail" /></span><div><strong>E-mail</strong><a href={`mailto:${company.email}`}>{company.email}</a></div></li>
+        </ul>
+      </div>
+      <div class="hero-card reveal reveal-d1">
+        <ContactForm heading="Send en forespørgsel" intro="" defaultSubject="Samarbejde (håndværker)" />
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,23 @@
+---
+import { references } from '../data/site';
+interface Props { title?: string; intro?: string; alt?: boolean }
+const { title = 'Vi har bl.a. løst opgaver for', intro = 'Fra kommuner og virksomheder til landmænd, håndværkere og private husejere.', alt = false } = Astro.props;
+---
+<section class:list={['section', { 'section-alt': alt }]} style="padding-block:clamp(56px,7vw,88px)">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:36px">
+      <span class="eyebrow">Referencer</span>
+      <h2>{title}</h2>
+      {intro && <p>{intro}</p>}
+    </div>
+    <div class="ref-wall">
+      {references.map((r, i) => (
+        <div class={`ref reveal reveal-d${i % 4}`}>
+          {r.logo && <img src={r.logo} alt="" loading="lazy" />}
+          <strong>{r.name}</strong>
+          <span>{r.project}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

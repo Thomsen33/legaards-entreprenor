@@ -1,4 +1,6 @@
 ---
+import Faq from '../components/Faq.astro';
+import { faq } from '../data/faq';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import PhotoGrid from '../components/PhotoGrid.astro';
@@ -102,6 +104,8 @@ const tasks = [
       <CaseGrid cases={cases.filter((c) => c.category === 'Anlæg')} />
     </div>
   </section>
+
+  <Faq items={faq.anlaeg} />
 
   <CtaBand title="Skal grunden gøres klar?" />
 </Base>

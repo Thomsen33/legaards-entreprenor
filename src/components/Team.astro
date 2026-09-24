@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+import Img from './Img.astro';
+import { team, company } from '../data/site';
+const initials = (n: string) => n.split(' ').map((p) => p[0]).slice(0, 2).join('').toUpperCase();
+---
+<div class="team">
+  {team.map((m, i) => (
+    <article class={`member reveal reveal-d${i % 4}`}>
+      <div class="photo">{m.photo ? <Img name={m.photo} alt={m.name} sizes="(max-width: 640px) 100vw, 25vw" /> : <span aria-hidden="true">{initials(m.name)}</span>}</div>
+      <div class="info">
+        <strong>{m.name}</strong>
+        <small>{m.role}</small>
+        {m.phone && <div><a href={company.phoneHref}><Icon name="phone" />{company.phone}</a></div>}
+      </div>
+    </article>
+  ))}
+</div>

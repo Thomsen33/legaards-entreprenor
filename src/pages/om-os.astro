@@ -5,6 +5,8 @@ import Img from '../components/Img.astro';
 import PhotoGrid from '../components/PhotoGrid.astro';
 import Icon from '../components/Icon.astro';
 import Reviews from '../components/Reviews.astro';
+import Team from '../components/Team.astro';
+import References from '../components/References.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { company } from '../data/site';
 import { imgData } from '../lib/img';
@@ -56,27 +58,22 @@ const values = [
   </section>
 
   <section class="section">
-    <div class="container person">
-      <!-- TODO: portræt af Christian -->
-      <div class="photo-feature reveal">
-        <button type="button" data-lightbox="om-os-person" data-full={imgData('maskine-gravemaskine-stenbunke').full} data-caption="Legaards i arbejde">
-          <Img name="maskine-gravemaskine-stenbunke" alt="Gravemaskine fra Legaards i arbejde" />
-        </button>
-        <div class="badge-float"><strong>{company.contactPerson}</strong><span>{company.contactTitle}</span></div>
-      </div>
-      <div class="reveal reveal-d1">
+    <div class="container">
+      <div class="section-head reveal">
         <span class="eyebrow">Mød folkene bag</span>
-        <h2>{company.contactPerson} <span class="accent-text">– {company.contactTitle.toLowerCase()}</span></h2>
-        <p style="color:var(--muted-fg);font-size:1.08rem">Christian er ejer af Legaards og din direkte kontakt – fra den første snak, til opgaven er afsluttet.</p>
-        <p style="color:var(--muted-fg);font-size:1.08rem">Alle opgaver er forskellige – derfor er vi fleksible. Ring og fortæl om din opgave, så finder vi den rigtige løsning sammen.</p>
-        <div class="hero-actions">
-          <a class="btn btn-accent" href={company.phoneHref}><Icon name="phone" />Ring til Christian</a>
-          <a class="btn btn-outline" href={`mailto:${company.email}`}><Icon name="mail" />Send en mail</a>
-        </div>
+        <h2>Folkene bag Legaards</h2>
+        <p>Hos os får du én fast kontaktperson fra første opkald, til opgaven er afsluttet. {company.contactPerson} er ejer og din direkte kontakt – og bag ham står et ungt team af uddannede medarbejdere.</p>
+      </div>
+      <!-- TODO: tilføj medarbejdere og billeder i src/data/site.ts (team) -->
+      <Team />
+      <div class="hero-actions" style="justify-content:center;margin-top:36px">
+        <a class="btn btn-accent" href={company.phoneHref}><Icon name="phone" />Ring til Christian</a>
+        <a class="btn btn-outline" href={`mailto:${company.email}`}><Icon name="mail" />Send en mail</a>
       </div>
     </div>
   </section>
 
-  <div class="section-alt"><Reviews /></div>
+  <References alt />
+  <Reviews />
   <CtaBand />
 </Base>

@@ -1,4 +1,6 @@
 ---
+import Faq from '../components/Faq.astro';
+import { faq } from '../data/faq';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Img from '../components/Img.astro';
@@ -79,4 +81,5 @@ const productSchema = {
       </div>
     </div>
   </section>
+  <Faq items={faq.koebMaterialer} />
 </Base>

@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CaseGrid from '../components/CaseGrid.astro';
 import Reviews from '../components/Reviews.astro';
+import References from '../components/References.astro';
 import CtaBand from '../components/CtaBand.astro';
 const crumbs = [{ name: 'Cases', href: '/cases/' }];
 ---
@@ -18,6 +19,7 @@ const crumbs = [{ name: 'Cases', href: '/cases/' }];
       <CaseGrid filters />
     </div>
   </section>
-  <div class="section-alt"><Reviews /></div>
+  <References alt />
+  <Reviews />
   <CtaBand />
 </Base>

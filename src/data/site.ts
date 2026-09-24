@@ -64,3 +64,18 @@ export const reviews = [
   { name: 'Andreas Jensen', text: "Go service go'e folk go oplevelse" },
   { name: 'June Jørgensen', text: 'Positive aspekter: Svartid, Punktlighed, Kvalitet, Professionalisme, Priser' },
 ];
+
+// Udvalgte kunder/referencer – fra Legaards' egne opslag.
+// TODO: indhent tilladelse, før logoer bruges. Tilføj `logo: '/img/logo-xxx.png'` når det er på plads.
+export const references: { name: string; project: string; logo?: string }[] = [
+  { name: 'Haderslev Kommune', project: 'Miljøsanering og nedrivning ved Jomfrustien' },
+  { name: 'Middelfart Kommune', project: 'Miljøsanering og fjernelse af togvogn' },
+  { name: 'DTE, Ribe', project: 'Selektiv nedrivning af varmehus' },
+  { name: 'Højbogaard', project: 'Knusning af beton på stedet' },
+  { name: 'Lokale tømrermestre', project: 'Asbestsanering af tage' },
+];
+
+// Folkene bag – tilføj medarbejdere her. `photo` = billednavn i /public/img (uden -800.webp).
+export const team: { name: string; role: string; photo?: string; phone?: boolean }[] = [
+  { name: 'Christian Legaard', role: 'Ejer og direktør', phone: true },
+];
