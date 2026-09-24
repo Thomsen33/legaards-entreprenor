@@ -8,11 +8,11 @@ import { company } from '../data/site';
 import { imgData } from '../lib/img';
 
 const crumbs = [{ name: 'Genbrugsplads', href: '/modtagerplads/' }, { name: 'Køb materialer', href: '/koeb-materialer/' }];
-const materials = [
-  { t: 'Knust beton', img: 'materiale-knust-beton', uses: ['Bundsikring', 'Opfyldning', 'Bærelag'] },
+const materials: { t: string; img: string; uses: string[]; sizes?: string }[] = [
+  { t: 'Knust beton', img: 'materiale-knust-beton', uses: ['Bundsikring', 'Opfyldning', 'Bærelag'], sizes: '0–40 mm og 0–80 mm' },
+  { t: 'Knust asfalt', img: 'materiale-moerkt', uses: ['Grusveje og indkørsler', 'Huller i veje', 'Bærelag'], sizes: '0–40 mm og 0–80 mm' },
   { t: 'Knust tegl', img: 'materiale-knust-groft', uses: ['Stier', 'Indkørsler', 'Drænlag'] },
   { t: 'Blandede materialer', img: 'materiale-knust-beton-bunke', uses: ['Opfyldning', 'Køreveje'] },
-  { t: 'Sorteret jern og metal', img: 'case-industri-nedrivning', uses: ['Sorteret jern', 'Metal'] },
 ];
 const productSchema = {
   '@context': 'https://schema.org',
@@ -41,7 +41,7 @@ const productSchema = {
       <div class="section-head reveal">
         <span class="eyebrow">Materialer</span>
         <h2>Det kan du købe</h2>
-        <p>Priser afhænger af mængde og levering. Kontakt os for et tilbud.</p>
+        <p>Vi har typisk knust beton og asfalt på lager. Priser afhænger af mængde og levering – ring for et tilbud. Sorteret jern og metal kan også købes efter aftale.</p>
       </div>
       <div class="grid grid-4">
         {materials.map((m, i) => (
@@ -53,6 +53,7 @@ const productSchema = {
               <h3>{m.t}</h3>
               <p style="margin-bottom:6px"><strong style="color:var(--fg)">Bruges til:</strong></p>
               <ul>{m.uses.map((u) => <li>{u}</li>)}</ul>
+              {m.sizes && <p style="margin:12px 0 0;font-size:.9rem"><strong style="color:var(--fg)">Fraktioner:</strong> {m.sizes}</p>}
             </div>
           </article>
         ))}

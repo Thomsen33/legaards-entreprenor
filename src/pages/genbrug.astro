@@ -11,13 +11,13 @@ import { imgData } from '../lib/img';
 
 const salg = [
   { src: 'salg-koeleanlaeg', t: 'Køleaggregater' },
-  { src: 'salg-kompressorer', t: 'Kompressorer' },
+  { src: 'salg-kompressorer', t: 'Bock-kompressorer' },
   { src: 'salg-vinduesparti', t: 'Vinduer og døre' },
   { src: 'salg-isolering', t: 'Isoleringsplader' },
-  { src: 'salg-paneler', t: 'Paneler og plader' },
-  { src: 'salg-container', t: 'Containere' },
-  { src: 'salg-betonplader-kran', t: 'Betonplader' },
-  { src: 'salg-lastning', t: 'Klar til afhentning' },
+  { src: 'salg-paneler', t: 'Sandwichplader' },
+  { src: 'salg-trailer', t: 'Rulleporte – solgt til Letland' },
+  { src: 'salg-betonplader-kran', t: 'Brovægt – solgt til Damms Holding Europa' },
+  { src: 'salg-lastning', t: 'Teknikskab – sendt til Grønland' },
 ];
 
 const crumbs = [{ name: 'Genbrugsplads', href: '/modtagerplads/' }, { name: 'Genbrug', href: '/genbrug/' }];
@@ -102,7 +102,33 @@ const crumbs = [{ name: 'Genbrugsplads', href: '/modtagerplads/' }, { name: 'Gen
     </div>
   </section>
 
+
   <section class="section section-alt">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Selektiv nedrivning i praksis</span>
+        <h2>Sådan får materialerne <span class="accent-text">nyt liv</span></h2>
+        <p>Ved en selektiv nedrivning i Bedsted blev bygningen taget ned, så flest mulige materialer kunne genbruges i deres oprindelige form:</p>
+        <Checklist single items={[
+          'Stålspær solgt til genopsætning i en ny bygning',
+          'Træ taget hjem og solgt via Legaards Genbrugs salg',
+          'Vinduer genbrugt på gården',
+          'Tagplader uden asbest taget ned og gensolgt',
+          'Øvrigt træ sendt til genanvendelse i spånplader',
+          'Tegl og beton knust og solgt som erstatning for nye råstoffer',
+        ]} />
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="tiles" style="grid-template-columns:1fr">
+          <div class="tile"><span class="icon-badge"><Icon name="truck" /></span><h3>Rulleporte til Letland</h3><p>To elektriske rulleporte fra en af vores opgaver er solgt og sendt til Letland.</p></div>
+          <div class="tile"><span class="icon-badge"><Icon name="truck" /></span><h3>Teknikskab til Grønland</h3><p>Et teknikskab er solgt og sendt til Grønland med Atlantic Shipping.</p></div>
+          <div class="tile"><span class="icon-badge"><Icon name="recycle" /></span><h3>Brovægt til Damms Holding Europa</h3><p>En brovægt er solgt, løftet på plads med kran og leveret til Damms Holding Europa.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Genbrugspladsen</span>

@@ -7,7 +7,7 @@ import CtaBand from '../components/CtaBand.astro';
 import { company } from '../data/site';
 
 const crumbs = [{ name: 'Genbrugsplads', href: '/modtagerplads/' }, { name: 'Aflever materialer', href: '/modtagerplads/' }];
-const yes = ['Beton', 'Tegl', 'Jern og lignende', 'Beton med jernarmering'];
+const yes = ['Beton – med og uden armering', 'Tegl', 'Asfalt', 'Jern og lignende'];
 const no = [
   'Eternit-tagplader',
   'Materialer der skal på deponi',
@@ -40,6 +40,7 @@ const no = [
         <div class="box yes reveal">
           <h2 style="font-size:1.6rem">Det tager vi imod</h2>
           <ul>{yes.map((t) => <li><Icon name="checkCircle" />{t}</li>)}</ul>
+          <p style="margin:16px 0 0;color:var(--muted-fg);font-size:.95rem">Beton – også armeret – modtages gratis. Ring for pris på tegl og asfalt.</p>
         </div>
         <div class="box no reveal reveal-d1">
           <h2 style="font-size:1.6rem">Det tager vi ikke imod</h2>
