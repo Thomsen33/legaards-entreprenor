@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Checklist from '../components/Checklist.astro';
+import Steps from '../components/Steps.astro';
+import Icon from '../components/Icon.astro';
+import CaseGrid from '../components/CaseGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { cases } from '../data/cases';
+
+const crumbs = [{ name: 'Asbest', href: '/asbest/' }];
+const where = [
+  { t: 'Tagplader', d: 'Eternit og andre fibercementplader på tage og udhuse.' },
+  { t: 'Facadeplader', d: 'Beklædning på facader, gavle og altaner.' },
+  { t: 'Ventilationskanaler', d: 'Kanaler og rør i ældre ventilationsanlæg.' },
+  { t: 'Rørisolering', d: 'Isolering omkring varmerør og kedler.' },
+  { t: 'Gulve og fliser', d: 'Vinylgulve, fliseklæb og fugemasse.' },
+  { t: 'Loft- og brandplader', d: 'Loftplader, brandplader og bag el-tavler.' },
+];
+---
+<Base
+  title="Asbest – certificeret screening og asbestsanering"
+  description="Legaards udfører certificeret asbestscreening og asbestsanering med uddannet personale, sikker bortskaffelse og fuld dokumentation. Hele Syddanmark."
+  image="asbest-tag-aabnet"
+  breadcrumbs={crumbs}
+>
+  <PageHero
+    title="Sikker og certificeret"
+    accent="asbesthåndtering"
+    lead="Asbest håndteres af certificerede folk – fra screening til bortskaffelse. Vi har udstyret, erfaringen og de påkrævede godkendelser til at fjerne asbest sikkert."
+    image="asbest-tag-udsugning"
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Asbestsanering</span>
+        <h2>Sikker og certificeret <span class="accent-text">asbesthåndtering</span></h2>
+        <p>Legaards er certificeret til at udføre asbestscreening og -sanering. Vi har det nødvendige udstyr, den rette ekspertise og de påkrævede godkendelser til at håndtere asbest sikkert.</p>
+        <p>Asbest blev brugt i byggematerialer frem til 1988 og findes stadig i mange ældre bygninger. Det er vigtigt at få foretaget en screening, før der renoveres eller rives ned.</p>
+        <Checklist items={[
+          'Certificeret asbestscreening',
+          'Professionel asbestsanering',
+          'Sikker bortskaffelse',
+          'Uddannet personale',
+          'Overholdelse af alle regler',
+          'Dokumentation og rapportering',
+        ]} />
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="asbest" images={[
+          { src: 'asbest-tag-afdaekning', alt: 'Afdækning af tag under asbestsanering' },
+          { src: 'asbest-miljoevogn-2', alt: 'Miljøvogn ved hus under asbestsanering' },
+          { src: 'asbest-fiberbinding', alt: 'Binding af fibre i loftrum' },
+          { src: 'asbest-sluse', alt: 'Sluse ved arbejdsområde' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Forløbet</span>
+        <h2>Sådan fjerner vi asbest</h2>
+      </div>
+      <div style="max-width:980px;margin:0 auto">
+        <ol class="steps steps-4" style="list-style:none;padding:0;margin:0">
+          {[
+            { t: 'Screening og analyse', d: 'Vi finder de asbestholdige materialer.' },
+            { t: 'Vurdering og plan', d: 'Sundhedsrisici vurderes, og der lægges en handlingsplan.' },
+            { t: 'Fjernelse', d: 'Asbesten fjernes med specialudstyr under afskærmning.' },
+            { t: 'Dokumentation', d: 'Korrekt bortskaffelse – og dokumentation til dig.' },
+          ].map((s, i) => (
+            <li class={`step reveal reveal-d${i}`}><span class="step-num">{i + 1}</span><h3>{s.t}</h3><p>{s.d}</p></li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Hvor sidder asbest?</span>
+        <h2>Typiske steder med asbest</h2>
+        <p>Er dit hus bygget eller renoveret før 1988, kan der være asbest i flere af disse materialer.</p>
+      </div>
+      <div class="tiles">
+        {where.map((x, i) => (
+          <div class={`tile reveal reveal-d${i % 3}`}><span class="icon-badge"><Icon name="alert" /></span><h3>{x.t}</h3><p>{x.d}</p></div>
+        ))}
+      </div>
+      <div class="notice reveal" style="margin-top:32px">
+        <Icon name="alert" />
+        <p><strong>Rør ikke ved materialer, du mistænker for asbest.</strong> Fibrene frigives, når materialet brydes, bores eller slibes. Få det screenet først – så ved du, hvad du står med.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">Case</span><h2>Asbestsanering i praksis</h2></div>
+      <CaseGrid cases={cases.filter((c) => c.category === 'Asbest')} />
+    </div>
+  </section>
+
+  <CtaBand title="Mistanke om asbest?" text="Kontakt Christian Legaard – så finder vi ud af, hvad der skal til, og giver dig et fast tilbud." />
+</Base>

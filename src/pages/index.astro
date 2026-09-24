@@ -1,0 +1,138 @@
+---
+import Base from '../layouts/Base.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import CaseGrid from '../components/CaseGrid.astro';
+import Reviews from '../components/Reviews.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Steps from '../components/Steps.astro';
+import { company } from '../data/site';
+import { cases } from '../data/cases';
+import { imgData } from '../lib/img';
+
+const featured = cases.filter((c) => c.featured).slice(0, 3);
+const why = [
+  'Certificeret til asbesthåndtering',
+  'Miljøscreening før nedrivning',
+  'Erfarne og uddannede medarbejdere',
+  `Maskinpark fra ${company.machinesTons}`,
+  'Mest muligt genbruges',
+  'Én fast kontaktperson',
+];
+---
+<Base
+  title="Legaards Entreprenør – nedrivning, asbest og anlæg i Syddanmark"
+  description="Legaards er din lokale entreprenør i Syddanmark: nedrivning, asbestsanering, miljøscreening, anlæg og genbrug. Ring til Christian på 24 78 84 10 for et tilbud."
+  image="case-industri-oversigt"
+>
+  <section class="hero">
+    <div class="hero-bg"><Img name="case-industri-nedrivning" alt="" sizes="100vw" eager /></div>
+    <div class="container">
+      <div>
+        <span class="eyebrow">Legaards Entreprenørforretning</span>
+        <h1>Nedbrydning, miljøscreening <span class="accent-text">&amp; anlæg</span></h1>
+        <p class="lead">Vi river ned, fjerner asbest, gør grunden klar – og sørger for, at mest muligt bliver genbrugt. I hele Syddanmark, til fornuftige priser.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
+          <a class="btn btn-ghost-light" href={`mailto:${company.email}`}><Icon name="mail" />{company.email}</a>
+        </div>
+        <div class="hero-links">
+          <a href="#ydelser">Se vores ydelser <Icon name="arrow" /></a>
+          <a href="/cases/">Se cases <Icon name="arrow" /></a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <ContactForm heading="Kontakt os i dag" compact />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ydelser">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Vi tilbyder bl.a.</span>
+        <h2>Hele forløbet <span class="accent-text">fra nedrivning til genbrug</span></h2>
+        <p>Nedrivning er kerneopgaven. Resten hænger sammen med den: screening før nedrivning, asbest undervejs, anlæg bagefter – og genbrug af materialerne til sidst.</p>
+      </div>
+      <ServiceCards />
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sådan foregår det</span>
+        <h2>Nedrivning i fem trin</h2>
+        <p>Du får én samlet løsning – vi tager os af det hele, fra første besigtigelse til den sidste sten er sorteret.</p>
+      </div>
+      <Steps steps={[
+        { title: 'Besigtigelse', text: 'Vi gennemgår bygningen og lægger en plan.' },
+        { title: 'Miljøscreening', text: 'Vi screener for asbest, PCB, bly og andre stoffer.' },
+        { title: 'Sanering', text: 'Miljøfarlige materialer fjernes forsvarligt først.' },
+        { title: 'Nedbrydning', text: 'Moderne maskiner og erfarne folk.' },
+        { title: 'Sortering og genbrug', text: 'Materialerne sorteres, så mest muligt bruges igen.' },
+      ]} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container person">
+      <div class="reveal">
+        <span class="eyebrow">Mød folkene bag</span>
+        <h2>{company.contactPerson} <span class="accent-text">– din kontaktperson</span></h2>
+        <p style="color:var(--muted-fg);font-size:1.08rem">Hos Legaards får du en personlig og direkte kontakt. {company.contactPerson} står klar til at hjælpe dig fra start til slut – uanset om du har spørgsmål om nedbrydning, asbesthåndtering eller anlægsarbejde.</p>
+        <p style="color:var(--muted-fg);font-size:1.08rem">Opgaverne er fleksible, og vi finder den løsning, der passer til dig. Ring eller skriv – vi er altid klar til en uforpligtende snak.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href={company.phoneHref}><Icon name="phone" />Ring til Christian</a>
+          <a class="btn btn-outline" href={`mailto:${company.email}`}><Icon name="mail" />Send en mail</a>
+        </div>
+      </div>
+      <!-- TODO: skift til portræt af Christian, når billedet er klar -->
+      <div class="photo-feature reveal reveal-d1">
+        <button type="button" data-lightbox="forside-person" data-full={imgData('maskine-gravemaskine-front').full} data-caption="Legaards maskinpark">
+          <Img name="maskine-gravemaskine-front" alt="Gravemaskine fra Legaards maskinpark" />
+        </button>
+        <div class="badge-float"><strong>Mange års erfaring</strong><span>Professionel &amp; personlig service</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head left reveal" style="display:flex;justify-content:space-between;align-items:flex-end;max-width:none;gap:24px;flex-wrap:wrap">
+        <div style="max-width:640px">
+          <span class="eyebrow">Udvalgte projekter</span>
+          <h2>Cases</h2>
+          <p>Se eksempler på vores arbejde – klik på en case for billeder og detaljer.</p>
+        </div>
+        <a class="link-arrow" href="/cases/">Se alle cases <Icon name="arrow" /></a>
+      </div>
+      <CaseGrid cases={featured} />
+    </div>
+  </section>
+
+  <Reviews />
+
+  <section class="section section-alt">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Hvorfor vælge Legaards?</span>
+        <h2>Legaards – <span class="accent-inline">godt arbejde hver gang</span></h2>
+        <p>Sikkerheden kommer først, og medarbejderne er uddannet til opgaven. Vi genbruger så meget som muligt – det skåner miljøet og gør ofte opgaven billigere for dig.</p>
+        <ul class="features">
+          {why.map((w) => <li><Icon name="checkCircle" />{w}</li>)}
+        </ul>
+      </div>
+      <div class="stat-card reveal reveal-d1">
+        <h3>Ring til os</h3>
+        <a class="big" href={company.phoneHref}>{company.phone}</a>
+        <p style="color:hsl(210 20% 85%)">Vi står klar til at hjælpe dig med dit næste projekt. {company.hours[0].days}: {company.hours[0].time}.</p>
+        <a class="btn btn-accent" href="/indhent-tilbud/">Få et gratis tilbud</a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CaseGrid from '../components/CaseGrid.astro';
+import Reviews from '../components/Reviews.astro';
+import CtaBand from '../components/CtaBand.astro';
+const crumbs = [{ name: 'Cases', href: '/cases/' }];
+---
+<Base
+  title="Cases – udvalgte opgaver inden for nedrivning, asbest og anlæg"
+  description="Se eksempler på Legaards' opgaver: nedrivning af industri, landbrug og boliger, asbestsanering og byggemodning i Syddanmark."
+  image="case-industri-oversigt"
+  breadcrumbs={crumbs}
+>
+  <PageHero title="Cases" accent="udvalgte projekter" lead="Udforsk vores projekter og se, hvordan vi løser forskellige typer opgaver inden for nedrivning, miljø og anlæg. Klik på en case for billeder og detaljer." image="case-landbrug-foer" crumbs={crumbs} cta={false} />
+  <section class="section">
+    <div class="container">
+      <CaseGrid filters />
+    </div>
+  </section>
+  <div class="section-alt"><Reviews /></div>
+  <CtaBand />
+</Base>

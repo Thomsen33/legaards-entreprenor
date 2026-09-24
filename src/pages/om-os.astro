@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Img from '../components/Img.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Icon from '../components/Icon.astro';
+import Reviews from '../components/Reviews.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company } from '../data/site';
+import { imgData } from '../lib/img';
+const crumbs = [{ name: 'Om os', href: '/om-os/' }];
+const values = [
+  { icon: 'shield', t: 'Sikkerhed først', d: 'Uddannede medarbejdere og styr på reglerne – især når der er miljøfarlige stoffer i spil.' },
+  { icon: 'recycle', t: 'Genbrug', d: 'Vi sorterer og genbruger så meget som muligt. Det skåner miljøet og din pengepung.' },
+  { icon: 'users', t: 'Personlig kontakt', d: `Du har én kontaktperson – ${company.contactPerson} – fra første opkald til afleveret opgave.` },
+  { icon: 'hardhat', t: 'Egen maskinpark', d: `Gravemaskiner fra ${company.machinesTons} og specialudstyr til nedrivning.` },
+];
+---
+<Base
+  title="Om Legaards – din lokale entreprenør i Syddanmark"
+  description="Legaards Entreprenørforretning ved Vojens: nedrivning, asbest, miljøscreening, anlæg og genbrug. Mød Christian Legaard og hør, hvordan vi arbejder."
+  image="plads-oversigt"
+  breadcrumbs={crumbs}
+>
+  <PageHero title="Om Legaards" accent="din lokale entreprenør" lead="Vi er en sønderjysk entreprenørvirksomhed med base ved Vojens. Vi løser opgaver i hele Syddanmark – for både private og erhverv." image="plads-oversigt" crumbs={crumbs} />
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Hvem er vi</span>
+        <h2>Nedrivning er kernen – <span class="accent-text">resten hænger sammen med den</span></h2>
+        <p>Hos Legaards er nedrivning kerneopgaven. Rundt om den har vi bygget de ydelser, der naturligt hører til: miljøscreening før nedrivning, asbestsanering undervejs, anlægsarbejde bagefter – og genbrug af materialerne til sidst.</p>
+        <p>På vores plads på {company.street} ved {company.city} har vi maskinparken og modtagerpladsen, hvor beton og tegl bliver knust og gjort klar til nyt liv.</p>
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="om-os" images={[
+          { src: 'plads-oversigt', alt: 'Legaards plads ved Vojens' },
+          { src: 'maskine-komatsu-pc290', alt: 'Gravemaskine fra maskinparken' },
+          { src: 'asbest-miljoevogn', alt: 'Legaards miljøvogn' },
+          { src: 'nedbrydning-villa-stillads', alt: 'Legaards varevogn ved opgave' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">Sådan arbejder vi</span><h2>Det kan du forvente</h2></div>
+      <div class="grid grid-4">
+        {values.map((v, i) => (
+          <div class={`tile reveal reveal-d${i % 4}`}><span class="icon-badge"><Icon name={v.icon} /></span><h3>{v.t}</h3><p>{v.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container person">
+      <!-- TODO: portræt af Christian -->
+      <div class="photo-feature reveal">
+        <button type="button" data-lightbox="om-os-person" data-full={imgData('maskine-gravemaskine-stenbunke').full} data-caption="Legaards i arbejde">
+          <Img name="maskine-gravemaskine-stenbunke" alt="Gravemaskine fra Legaards i arbejde" />
+        </button>
+        <div class="badge-float"><strong>{company.contactPerson}</strong><span>{company.contactTitle}</span></div>
+      </div>
+      <div class="reveal reveal-d1">
+        <span class="eyebrow">Mød folkene bag</span>
+        <h2>{company.contactPerson} <span class="accent-text">– {company.contactTitle.toLowerCase()}</span></h2>
+        <p style="color:var(--muted-fg);font-size:1.08rem">Christian er ejer af Legaards og din direkte kontakt – fra den første snak, til opgaven er afsluttet.</p>
+        <p style="color:var(--muted-fg);font-size:1.08rem">Alle opgaver er forskellige – derfor er vi fleksible. Ring og fortæl om din opgave, så finder vi den rigtige løsning sammen.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href={company.phoneHref}><Icon name="phone" />Ring til Christian</a>
+          <a class="btn btn-outline" href={`mailto:${company.email}`}><Icon name="mail" />Send en mail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-alt"><Reviews /></div>
+  <CtaBand />
+</Base>

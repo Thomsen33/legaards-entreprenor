@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Img from '../components/Img.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { gallery, galleryCategories } from '../data/gallery';
+import { imgData } from '../lib/img';
+const crumbs = [{ name: 'Galleri', href: '/galleri/' }];
+---
+<Base
+  title="Galleri – billeder fra vores opgaver"
+  description="Billeder fra Legaards' opgaver: nedrivning, asbestsanering, anlæg, genbrugsplads og maskinpark. Kun egne billeder fra rigtige opgaver."
+  image="maskine-gravemaskine-stenbunke"
+  breadcrumbs={crumbs}
+>
+  <PageHero title="Galleri" accent="billeder fra vores opgaver" lead="Kun egne billeder fra rigtige opgaver – ingen stockfotos. Klik på et billede for at se det i stor visning." image="maskine-gravemaskine-stenbunke" crumbs={crumbs} cta={false} />
+  <section class="section">
+    <div class="container">
+      <div class="filters" role="group" aria-label="Filtrér billeder">
+        {['Alle', ...galleryCategories].map((c, i) => <button type="button" data-filter={c} aria-pressed={i === 0 ? 'true' : 'false'}>{c}</button>)}
+      </div>
+      <div class="masonry">
+        {gallery.map((g) => (
+          <button type="button" data-lightbox="galleri" data-cat={g.cat} data-full={imgData(g.src).full} data-caption={g.alt} aria-label={`Vis stort: ${g.alt}`}>
+            <Img name={g.src} alt={g.alt} sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" />
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

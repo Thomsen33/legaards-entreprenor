@@ -1,0 +1,66 @@
+---
+import Icon from './Icon.astro';
+import { nav, company } from '../data/site';
+const path = Astro.url.pathname;
+const isActive = (item: (typeof nav)[number]) =>
+  path === item.href || (item.children?.some((c) => path === c.href) ?? false);
+---
+<a class="skip-link" href="#main">Gå til indhold</a>
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo" aria-label="Legaards Entreprenørforretning – til forsiden">
+      <img src="/img/logo-legaards.png" alt="Legaards Entreprenørforretning" width="640" height="181" />
+    </a>
+    <nav class="main-nav" aria-label="Hovedmenu">
+      <ul>
+        {nav.map((item) =>
+          item.children ? (
+            <li class:list={['has-sub', { active: isActive(item) }]}>
+              <button type="button" class="nav-toggle" aria-expanded="false">
+                {item.label}<Icon name="chevronDown" />
+              </button>
+              <ul class="submenu">
+                {item.children.map((c) => (
+                  <li><a href={c.href} aria-current={path === c.href ? 'page' : undefined}><strong>{c.label}</strong>{c.desc && <span>{c.desc}</span>}</a></li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li class:list={{ active: isActive(item) }}><a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a></li>
+          )
+        )}
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a class="header-phone" href={company.phoneHref}><Icon name="phone" /><span>{company.phone}</span></a>
+      <a class="btn btn-accent btn-sm" href="/indhent-tilbud/">Få et tilbud</a>
+    </div>
+    <button class="burger" type="button" aria-label="Åbn menu" aria-controls="drawer" aria-expanded="false" data-drawer-open>
+      <Icon name="menu" />
+    </button>
+  </div>
+</header>
+
+<div class="drawer-backdrop" data-drawer-close></div>
+<aside class="drawer" id="drawer" aria-label="Mobilmenu">
+  <div class="drawer-head">
+    <a href="/"><img src="/img/logo-legaards.png" alt="Legaards" width="640" height="181" /></a>
+    <button class="drawer-close" type="button" aria-label="Luk menu" data-drawer-close><Icon name="x" /></button>
+  </div>
+  <nav>
+    {nav.map((item) =>
+      item.children ? (
+        <>
+          <p class="group-label">{item.label}</p>
+          <ul>{item.children.map((c) => <li><a href={c.href}>{c.label}</a></li>)}</ul>
+        </>
+      ) : null
+    )}
+    <p class="group-label">Mere</p>
+    <ul>{nav.filter((i) => !i.children).map((i) => <li><a href={i.href}>{i.label}</a></li>)}</ul>
+  </nav>
+  <div class="drawer-foot">
+    <a class="btn btn-accent" href="/indhent-tilbud/">Få et tilbud</a>
+    <a class="btn btn-outline" href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
+  </div>
+</aside>

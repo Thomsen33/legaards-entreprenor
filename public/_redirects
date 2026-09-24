@@ -1,0 +1,19 @@
+# 301-redirects fra det gamle WordPress-site (legaards.dk).
+# Sider med samme URL (/nedbrydning/, /asbest/ osv.) behøver ingen redirect.
+/reference/isolering-af-tag-samt-vindue-opsaetning-og-lysindfald/  /cases/  301
+/reference/*          /cases/        301
+/hello-world/         /              301
+/category/*           /              301
+/kategori/*           /cases/        301
+/author/*             /              301
+/udtalelse/*          /cases/        301
+/sitemap_index.xml    /sitemap-index.xml  301
+/page-sitemap.xml     /sitemap-index.xml  301
+/post-sitemap.xml     /sitemap-index.xml  301
+/wp-admin/*           /              301
+/wp-login.php         /              301
+/forside/             /              301
+/modtager-plads/      /modtagerplads/     301
+/genbrugsplads/       /modtagerplads/     301
+/aflever-materialer/  /modtagerplads/     301
+/materialer/          /koeb-materialer/   301

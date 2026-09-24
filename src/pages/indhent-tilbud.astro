@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Checklist from '../components/Checklist.astro';
+import Icon from '../components/Icon.astro';
+import { company } from '../data/site';
+const crumbs = [{ name: 'Få et tilbud', href: '/indhent-tilbud/' }];
+---
+<Base
+  title="Få et uforpligtende tilbud på din opgave"
+  description="Indhent et gratis og uforpligtende tilbud på nedrivning, asbestsanering, miljørapport, anlæg eller materialer fra Legaards. Vi vender hurtigt tilbage."
+  image="case-industri-oversigt"
+  breadcrumbs={crumbs}
+>
+  <PageHero title="Få et tilbud" accent="gratis og uforpligtende" lead={`Fortæl kort om opgaven, så vender vi hurtigt tilbage. Du kan også ringe direkte til ${company.contactPerson} på ${company.phone}.`} image="case-industri-oversigt" crumbs={crumbs} cta={false} />
+  <section class="section">
+    <div class="container split" style="align-items:start">
+      <div class="hero-card reveal">
+        <ContactForm heading="Beskriv din opgave" intro="Jo mere du fortæller, jo mere præcist kan vi give et tilbud." />
+      </div>
+      <div class="reveal reveal-d1">
+        <h2>Sådan foregår det</h2>
+        <Checklist single items={[
+          'Du sender en forespørgsel eller ringer',
+          'Vi kontakter dig og aftaler evt. besigtigelse',
+          'Du får et tilbud på opgaven',
+          'Vi aftaler opstart, når det passer dig',
+        ]} />
+        <div class="stat-card" style="margin-top:40px">
+          <h3>Hellere ringe?</h3>
+          <a class="big" href={company.phoneHref}>{company.phone}</a>
+          <p style="color:hsl(210 20% 85%);margin:0">{company.contactPerson} · {company.hours[0].days} {company.hours[0].time}</p>
+        </div>
+        <p style="margin-top:28px;color:var(--muted-fg)"><Icon name="checkCircle" class="sr-only" />Tip: Vedhæft gerne billeder af opgaven, når vi svarer dig pr. mail.</p>
+      </div>
+    </div>
+  </section>
+</Base>

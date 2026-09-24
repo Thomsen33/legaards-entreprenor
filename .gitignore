@@ -1,4 +1,9 @@
 .DS_Store
 node_modules/
+dist/
+.astro/
 .env
 .env.*
+
+# Originale billeder (store filer) – kun web-optimerede versioner committes
+_originaler/

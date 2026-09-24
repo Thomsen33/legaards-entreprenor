@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company } from '../data/site';
+
+const crumbs = [{ name: 'Genbrugsplads', href: '/modtagerplads/' }, { name: 'Aflever materialer', href: '/modtagerplads/' }];
+const yes = ['Beton', 'Tegl', 'Jern og lignende', 'Beton med jernarmering'];
+const no = [
+  'Eternit-tagplader',
+  'Materialer der skal på deponi',
+  'Gulvklinker og vægfliser (forhøjet bly)',
+  'Beton med mere end 1 cm flamingo eller isolering',
+];
+---
+<Base
+  title="Modtagerplads ved Vojens – aflever beton, tegl og jern"
+  description="Aflever sorteret beton, tegl, jern og armeret beton på Legaards modtagerplads, Stydingvej 2, Vojens. Åbent mandag–fredag efter telefonisk aftale."
+  image="plads-lastbil-beton"
+  breadcrumbs={crumbs}
+>
+  <PageHero
+    title="Aflever materialer"
+    accent="på vores modtagerplads"
+    lead={`Vi tager imod sorteret beton, tegl og jern på pladsen på ${company.street} ved ${company.city}. Åbent mandag til fredag efter telefonisk aftale.`}
+    image="plads-oversigt"
+    crumbs={crumbs}
+    cta={false}
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="notice reveal" style="margin-bottom:48px">
+        <Icon name="phone" />
+        <p><strong>Ring altid før du kommer:</strong> Pladsen har åbent mandag til fredag efter telefonisk aftale. Ring til {company.contactPerson} på <a href={company.phoneHref}>{company.phone}</a>.</p>
+      </div>
+      <div class="do-dont">
+        <div class="box yes reveal">
+          <h2 style="font-size:1.6rem">Det tager vi imod</h2>
+          <ul>{yes.map((t) => <li><Icon name="checkCircle" />{t}</li>)}</ul>
+        </div>
+        <div class="box no reveal reveal-d1">
+          <h2 style="font-size:1.6rem">Det tager vi ikke imod</h2>
+          <ul>{no.map((t) => <li><Icon name="xCircle" />{t}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Krav til materialerne</span>
+        <h2>Sorteret og <span class="accent-text">ikke forurenet</span></h2>
+        <p>Materialerne skal være sorteret fri for plast, træ, PVC og isolering, og de må ikke være forurenede. På den måde kan vi knuse og genbruge dem som nye materialer.</p>
+        <p>Er du i tvivl om, hvorvidt dine materialer kan afleveres? Ring til os, så afklarer vi det, inden du kører.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href={company.phoneHref}><Icon name="phone" />Ring og aftal aflevering</a>
+          <a class="link-arrow" href="/koeb-materialer/">Køb knuste materialer <Icon name="arrow" /></a>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="modtagerplads" images={[
+          { src: 'plads-lastbil-beton', alt: 'Lastbil med beton til modtagerpladsen' },
+          { src: 'plads-tipvogn', alt: 'Aflæsning af materialer' },
+          { src: 'plads-knuser', alt: 'Knusning af beton' },
+          { src: 'plads-bunker', alt: 'Bunker af knust materiale' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split reverse">
+      <div class="reveal">
+        <span class="eyebrow">Find vej</span>
+        <h2>Pladsen ligger på {company.street}</h2>
+        <ul class="contact-list" style="margin-top:24px">
+          <li><span class="icon-badge"><Icon name="pin" /></span><div><strong>Adresse</strong>{company.street}, {company.zip} {company.city}</div></li>
+          <li><span class="icon-badge"><Icon name="clock" /></span><div><strong>Åbningstider</strong>Mandag – fredag efter telefonisk aftale</div></li>
+          <li><span class="icon-badge"><Icon name="phone" /></span><div><strong>Telefon</strong><a href={company.phoneHref}>{company.phone}</a></div></li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-outline" href={`https://www.google.com/maps/dir/?api=1&destination=${company.geo.lat},${company.geo.lng}`} target="_blank" rel="noopener"><Icon name="pin" />Rutevejledning</a>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="plads-2" images={[
+          { src: 'plads-oversigt', alt: 'Legaards plads med maskiner' },
+          { src: 'plads-bygning', alt: 'Bygningen på pladsen' },
+          { src: 'plads-knuser-gravemaskine', alt: 'Knuser og gravemaskine' },
+          { src: 'plads-bunke-laesser', alt: 'Læsser ved bunke' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Skal du af med beton eller tegl?" text="Ring og aftal tidspunkt – eller spørg os, hvis du er i tvivl om dine materialer kan afleveres." />
+</Base>

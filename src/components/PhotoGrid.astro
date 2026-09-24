@@ -1,0 +1,14 @@
+---
+// 4-billeders grid med fuldskærmsvisning. images: [{src, alt}]
+import Img from './Img.astro';
+import { imgData } from '../lib/img';
+interface Props { images: { src: string; alt: string }[]; group: string }
+const { images, group } = Astro.props;
+---
+<div class="photo-grid">
+  {images.slice(0, 4).map((im, i) => (
+    <button type="button" class={`reveal reveal-d${i % 4}`} data-lightbox={group} data-full={imgData(im.src).full} data-caption={im.alt} aria-label={`Vis stort: ${im.alt}`}>
+      <Img name={im.src} alt={im.alt} sizes="(max-width: 960px) 50vw, 25vw" />
+    </button>
+  ))}
+</div>

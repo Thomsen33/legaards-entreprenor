@@ -1,0 +1,33 @@
+---
+import Img from './Img.astro';
+import Icon from './Icon.astro';
+import { cases as allCases, type Case } from '../data/cases';
+import { imgData } from '../lib/img';
+interface Props { cases?: Case[]; filters?: boolean }
+const { cases = allCases, filters = false } = Astro.props;
+const payload = cases.map((c) => ({ ...c, images: c.images.map((im) => ({ ...im, full: imgData(im.src).full })) }));
+const cats = ['Alle', ...new Set(cases.map((c) => c.category))];
+---
+{filters && cats.length > 2 && (
+  <div class="filters" role="group" aria-label="Filtrér cases">
+    {cats.map((c, i) => <button type="button" data-filter={c} aria-pressed={i === 0 ? 'true' : 'false'}>{c}</button>)}
+  </div>
+)}
+<div class="grid grid-3">
+  {cases.map((c, i) => (
+    <button type="button" class={`card case-card reveal reveal-d${i % 3}`} data-case={c.slug} data-cat={c.category} aria-label={`Åbn case: ${c.title}`}>
+      <div class="card-img">
+        <Img name={c.images[0].src} alt={c.images[0].alt} sizes="(max-width: 640px) 100vw, 33vw" />
+        <span class="count"><Icon name="images" />{c.images.length} billeder</span>
+      </div>
+      <div class="card-body">
+        <span class="tag">{c.category}</span>
+        <h3>{c.title}</h3>
+        <p class="case-meta">{[c.location, c.year].filter(Boolean).join(' • ')}</p>
+        <p>{c.summary}</p>
+        <span class="link-arrow">Se casen <Icon name="arrow" /></span>
+      </div>
+    </button>
+  ))}
+</div>
+<script type="application/json" id="cases-data" set:html={JSON.stringify(payload)} />

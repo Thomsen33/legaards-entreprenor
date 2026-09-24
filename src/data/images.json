@@ -1,0 +1,593 @@
+{
+"maskine-komatsu-pc290": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"maskine-foererhus": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"maskine-gravemaskine-front": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"maskine-sorteringsgrab": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"maskine-gravemaskine-stenbunke": {
+"w": 1179,
+"h": 1884,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-udsigt-foererhus": {
+"w": 1179,
+"h": 1794,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-villa-stillads": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-hus-ved-vandet": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-villa-container": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-hus-tag": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-mursten": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-indvendig": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-erhverv-facade": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-betonbrud": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"nedbrydning-betonbunke": {
+"w": 1440,
+"h": 1920,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-hal-foer": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-grab": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-nedrivning": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-oversigt": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-tag": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-tag-demontering": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-hal-indvendig": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-ryddet": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-loeft": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-industri-loeft-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-landbrug-foer": {
+"w": 1152,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-landbrug-stald": {
+"w": 2048,
+"h": 1152,
+"sizes": [
+800,
+1600
+]
+},
+"case-landbrug-nedrivning": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-landbrug-ryddet": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"case-landbrug-koereplader": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-miljoevogn": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-tag-aabnet": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-tag-udsugning": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-loftrum-indkapslet": {
+"w": 1152,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-tag-afdaekning": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-miljoevogn-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-fiberbinding": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-sluse": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-tag-plast": {
+"w": 1440,
+"h": 1920,
+"sizes": [
+800,
+1600
+]
+},
+"asbest-tag-arbejde": {
+"w": 1440,
+"h": 1920,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-udgravning-hus": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-udgravning": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-udgravning-lastbil": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-udgravning-2": {
+"w": 2048,
+"h": 1152,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-ryddet-grund": {
+"w": 945,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-byggemodning": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-afspaerret-grund": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-planering-landmaaling": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-planering-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-planering": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-sandlevering": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-sandpude": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"anlaeg-jordarbejde": {
+"w": 1440,
+"h": 1920,
+"sizes": [
+800,
+1600
+]
+},
+"plads-laesser": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-bygning": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-bunker": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-knuser": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-tipvogn": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-beton-laesser": {
+"w": 945,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-laesser-2": {
+"w": 1152,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-knuser-gravemaskine": {
+"w": 945,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-bunke-laesser": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"plads-knuser-traktor": {
+"w": 1179,
+"h": 1176,
+"sizes": [
+800,
+1600
+]
+},
+"plads-bunke-gravemaskine": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"plads-oversigt": {
+"w": 2048,
+"h": 1536,
+"sizes": [
+800,
+1600
+]
+},
+"plads-lastbil-beton": {
+"w": 1080,
+"h": 1920,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-knust-beton": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-knust-beton-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-knust-beton-bunke": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-bunke-laesser": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-knust-groft": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-moerkt": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"materiale-moerkt-2": {
+"w": 1536,
+"h": 2048,
+"sizes": [
+800,
+1600
+]
+},
+"genbrug-isoleringsplader": {
+"w": 515,
+"h": 543,
+"sizes": [
+800
+]
+}
+}

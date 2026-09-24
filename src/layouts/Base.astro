@@ -1,0 +1,123 @@
+---
+import '@fontsource/oswald/500.css';
+import '@fontsource/oswald/600.css';
+import '@fontsource/oswald/700.css';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { company } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string; // billednavn fra manifest
+  breadcrumbs?: { name: string; href: string }[];
+  schema?: Record<string, unknown>[];
+}
+const { title, description, image = 'case-industri-oversigt', breadcrumbs = [], schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(`/img/${image}-1600.webp`, Astro.site).href;
+const fullTitle = title.includes('Legaards') ? title : `${title} | Legaards`;
+
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'GeneralContractor',
+  '@id': 'https://legaards.dk/#firma',
+  name: company.name,
+  url: 'https://legaards.dk/',
+  logo: 'https://legaards.dk/img/logo-legaards.png',
+  image: ogImage,
+  telephone: '+45 24 78 84 10',
+  email: company.email,
+  vatID: `DK${company.cvr}`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.street,
+    postalCode: company.zip,
+    addressLocality: company.city,
+    addressCountry: 'DK',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: company.geo.lat, longitude: company.geo.lng },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Syddanmark' },
+  openingHoursSpecification: [{
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:00', closes: '17:00',
+  }],
+  sameAs: [company.facebook],
+};
+const crumbs = breadcrumbs.length
+  ? [{
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ name: 'Forside', href: '/' }, ...breadcrumbs].map((b, i) => ({
+        '@type': 'ListItem', position: i + 1, name: b.name, item: new URL(b.href, Astro.site).href,
+      })),
+    }]
+  : [];
+const jsonLd = [business, ...crumbs, ...schema];
+---
+<!doctype html>
+<html lang="da" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="theme-color" content="#243647" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="da_DK" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>document.documentElement.classList.remove('no-js');</script>
+    {jsonLd.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Fuldskærmsgalleri -->
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Billedvisning" data-lightbox-root>
+      <span class="lb-count" data-lb-count></span>
+      <button class="lb-btn lb-close" type="button" aria-label="Luk" data-lb-close><Icon name="x" /></button>
+      <button class="lb-btn lb-prev" type="button" aria-label="Forrige billede" data-lb-prev><Icon name="chevronLeft" /></button>
+      <figure><img alt="" data-lb-img /><figcaption data-lb-caption></figcaption></figure>
+      <button class="lb-btn lb-next" type="button" aria-label="Næste billede" data-lb-next><Icon name="chevronRight" /></button>
+    </div>
+
+    <!-- Case-popup -->
+    <div class="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-title" data-case-root>
+      <div class="case-dialog">
+        <button class="lb-btn case-close" type="button" aria-label="Luk" data-case-close><Icon name="x" /></button>
+        <div class="case-gallery">
+          <div class="slides" data-case-slides></div>
+          <button class="lb-btn lb-prev" type="button" aria-label="Forrige billede" data-case-prev><Icon name="chevronLeft" /></button>
+          <button class="lb-btn lb-next" type="button" aria-label="Næste billede" data-case-next><Icon name="chevronRight" /></button>
+          <div class="dots" data-case-dots></div>
+        </div>
+        <div class="case-content">
+          <span class="tag" data-case-tag></span>
+          <h2 id="case-title" data-case-title></h2>
+          <div data-case-body></div>
+          <div class="facts"><h3>Fakta om opgaven</h3><dl data-case-facts></dl></div>
+          <a class="btn btn-accent" href="/indhent-tilbud/">Få et tilbud på en lignende opgave</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      import '../scripts/main.ts';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { services } from '../data/site';
+---
+<Base title="Siden blev ikke fundet" description="Siden findes ikke. Find vej til Legaards' ydelser herfra.">
+  <section class="section">
+    <div class="container" style="text-align:center;max-width:720px">
+      <span class="eyebrow">Fejl 404</span>
+      <h1>Siden blev <span class="accent-inline">ikke fundet</span></h1>
+      <p style="color:var(--muted-fg);font-size:1.1rem">Siden er flyttet eller findes ikke længere. Prøv en af disse:</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-accent" href="/">Til forsiden</a>
+        {services.slice(0, 3).map((s) => <a class="btn btn-outline" href={s.href}>{s.label}</a>)}
+      </div>
+    </div>
+  </section>
+</Base>

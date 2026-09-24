@@ -1,0 +1,8 @@
+---
+import Icon from './Icon.astro';
+interface Props { items: string[]; single?: boolean }
+const { items, single = false } = Astro.props;
+---
+<ul class:list={['checklist', { single }]}>
+  {items.map((t) => <li><Icon name="checkCircle" /><span>{t}</span></li>)}
+</ul>

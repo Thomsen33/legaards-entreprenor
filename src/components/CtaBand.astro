@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+import { company } from '../data/site';
+interface Props { title?: string; text?: string }
+const { title = 'Klar til at starte dit projekt?', text = `Ring til ${company.contactPerson} for en uforpligtende snak. Vi giver gerne et tilbud og rådgiver om den bedste løsning.` } = Astro.props;
+---
+<section class="cta-band">
+  <div class="container">
+    <div class="reveal">
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="actions reveal reveal-d1">
+      <a class="btn btn-accent" href="/indhent-tilbud/">Få et gratis tilbud</a>
+      <a class="btn btn-ghost-light" href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
+    </div>
+  </div>
+</section>

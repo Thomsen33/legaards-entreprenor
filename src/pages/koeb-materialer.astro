@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { company } from '../data/site';
+import { imgData } from '../lib/img';
+
+const crumbs = [{ name: 'Genbrugsplads', href: '/modtagerplads/' }, { name: 'Køb materialer', href: '/koeb-materialer/' }];
+const materials = [
+  { t: 'Knust beton', img: 'materiale-knust-beton', uses: ['Bundsikring', 'Opfyldning', 'Bærelag'] },
+  { t: 'Knust tegl', img: 'materiale-knust-groft', uses: ['Stier', 'Indkørsler', 'Drænlag'] },
+  { t: 'Blandede materialer', img: 'materiale-knust-beton-bunke', uses: ['Opfyldning', 'Køreveje'] },
+  { t: 'Sorteret jern og metal', img: 'case-industri-nedrivning', uses: ['Sorteret jern', 'Metal'] },
+];
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: 'Genbrugsmaterialer fra Legaards',
+  itemListElement: materials.map((m) => ({ '@type': 'Offer', itemOffered: { '@type': 'Product', name: m.t, description: `Anvendes til: ${m.uses.join(', ').toLowerCase()}` } })),
+};
+---
+<Base
+  title="Køb knust beton og tegl – levering i hele Syddanmark"
+  description="Køb knust beton, knust tegl og blandede materialer til bundsikring, opfyldning, stier og indkørsler. Levering i hele Syddanmark eller afhentning ved Vojens."
+  image="materiale-knust-beton-bunke"
+  breadcrumbs={crumbs}
+  schema={[productSchema]}
+>
+  <PageHero
+    title="Køb materialer"
+    accent="knust beton, tegl og mere"
+    lead="Genbrugte materialer fra vores egne opgaver – et billigere og grønnere alternativ til nye materialer. Leveres i hele Syddanmark eller hentes på pladsen."
+    image="materiale-knust-beton-bunke"
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Materialer</span>
+        <h2>Det kan du købe</h2>
+        <p>Priser afhænger af mængde og levering. Kontakt os for et tilbud.</p>
+      </div>
+      <div class="grid grid-4">
+        {materials.map((m, i) => (
+          <article class={`card material reveal reveal-d${i % 4}`}>
+            <button type="button" class="card-img" style="border:0;padding:0;display:block;width:100%" data-lightbox="materialer" data-full={imgData(m.img).full} data-caption={m.t}>
+              <Img name={m.img} alt={m.t} sizes="(max-width: 640px) 100vw, 25vw" />
+            </button>
+            <div class="card-body">
+              <h3>{m.t}</h3>
+              <p style="margin-bottom:6px"><strong style="color:var(--fg)">Bruges til:</strong></p>
+              <ul>{m.uses.map((u) => <li>{u}</li>)}</ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Levering eller afhentning</span>
+        <h2>Vi leverer <span class="accent-text">i hele Syddanmark</span></h2>
+        <p>Vi kan levere materialerne direkte på din adresse – eller du kan selv hente dem på pladsen på {company.street} ved {company.city}. Afhentning sker efter telefonisk aftale.</p>
+        <ul class="contact-list" style="margin-top:24px">
+          <li><span class="icon-badge"><Icon name="truck" /></span><div><strong>Levering</strong>I hele Syddanmark</div></li>
+          <li><span class="icon-badge"><Icon name="pin" /></span><div><strong>Afhentning</strong>{company.street}, {company.zip} {company.city}</div></li>
+          <li><span class="icon-badge"><Icon name="phone" /></span><div><strong>Bestilling</strong><a href={company.phoneHref}>{company.phone}</a></div></li>
+        </ul>
+        <p style="margin-top:28px">Har du selv beton eller tegl, du skal af med? <a class="link-arrow" href="/modtagerplads/">Se hvad vi modtager <Icon name="arrow" /></a></p>
+      </div>
+      <div class="hero-card reveal reveal-d1">
+        <ContactForm heading="Få et tilbud på materialer" intro="Skriv hvilket materiale, mængde og om det skal leveres." defaultSubject="Køb materialer" />
+      </div>
+    </div>
+  </section>
+</Base>

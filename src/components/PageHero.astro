@@ -1,0 +1,27 @@
+---
+import Img from './Img.astro';
+import Icon from './Icon.astro';
+import { company } from '../data/site';
+interface Props { title: string; accent?: string; lead?: string; image: string; eyebrow?: string; crumbs?: { name: string; href: string }[]; cta?: boolean }
+const { title, accent, lead, image, eyebrow, crumbs = [], cta = true } = Astro.props;
+---
+<section class="page-hero">
+  <div class="hero-bg"><Img name={image} alt="" sizes="100vw" eager /></div>
+  <div class="container">
+    {crumbs.length > 0 && (
+      <nav class="breadcrumbs" aria-label="Brødkrummer">
+        <a href="/">Forside</a>
+        {crumbs.map((c, i) => (<><span>/</span>{i === crumbs.length - 1 ? <span aria-current="page" style="margin:0;opacity:1">{c.name}</span> : <a href={c.href}>{c.name}</a>}</>))}
+      </nav>
+    )}
+    {eyebrow && <span class="eyebrow" style="background:var(--grad-accent);color:var(--industrial)">{eyebrow}</span>}
+    <h1>{title}{accent && <span class="accent-text">{accent}</span>}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    {cta && (
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="/indhent-tilbud/">Få et tilbud</a>
+        <a class="btn btn-ghost-light" href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
+      </div>
+    )}
+  </div>
+</section>

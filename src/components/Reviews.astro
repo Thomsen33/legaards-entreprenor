@@ -1,0 +1,34 @@
+---
+import Icon from './Icon.astro';
+import { reviews, company } from '../data/site';
+const initials = (n: string) => n.split(' ').map((p) => p[0]).slice(0, 2).join('').toUpperCase();
+---
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Anmeldelser</span>
+      <h2>Det siger vores kunder</h2>
+    </div>
+    <div class="reviews-head reveal">
+      <span class="stars" aria-label={`${company.googleRating.toFixed(1).replace('.', ',')} ud af 5 stjerner`}>{[1, 2, 3, 4, 5].map(() => <Icon name="star" />)}</span>
+      <strong>{company.googleRating.toFixed(1).replace('.', ',')} på Google</strong>
+      <span style="color:var(--muted-fg)">baseret på {company.googleReviewCount} anmeldelser</span>
+    </div>
+    <div class="grid grid-4">
+      {reviews.map((r, i) => (
+        <article class={`review reveal reveal-d${i % 4}`}>
+          <span class="stars">{[1, 2, 3, 4, 5].map(() => <Icon name="star" />)}</span>
+          <blockquote>“{r.text}”</blockquote>
+          {r.sign && <p class="sign">{r.sign}</p>}
+          <footer>
+            <span class="avatar">{initials(r.name)}</span>
+            <div><strong>{r.name}</strong><small>Google-anmeldelse</small></div>
+          </footer>
+        </article>
+      ))}
+    </div>
+    <p style="text-align:center;margin-top:40px">
+      <a class="btn btn-outline" href={company.googleReviews} target="_blank" rel="noopener">Se alle anmeldelser på Google <Icon name="arrow" /></a>
+    </p>
+  </div>
+</section>

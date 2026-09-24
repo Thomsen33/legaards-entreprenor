@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Checklist from '../components/Checklist.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company } from '../data/site';
+
+const crumbs = [{ name: 'Miljørapport', href: '/miljoerapport/' }];
+const substances = [
+  { t: 'Asbest', d: 'I tagplader, facader, rør og ventilationskanaler.' },
+  { t: 'PCB', d: 'I fuger, termoruder og maling.' },
+  { t: 'Bly', d: 'I maling, rør og installationer.' },
+  { t: 'Tungmetaller', d: 'Fx cadmium, krom og kviksølv i maling og installationer.' },
+  { t: 'PAH', d: 'I tjære, tagpap og bitumen.' },
+  { t: 'Klorparaffiner', d: 'I fugemasse og visse typer maling.' },
+];
+---
+<Base
+  title="Miljørapport og miljøscreening før nedrivning"
+  description="Miljøscreening for asbest, PCB, bly, tungmetaller, PAH og klorparaffiner før nedrivning. Detaljeret miljørapport til myndighedsgodkendelse. Legaards, Syddanmark."
+  image="case-industri-hal-foer"
+  breadcrumbs={crumbs}
+>
+  <PageHero
+    title="Miljørapport"
+    accent="og miljøscreening"
+    lead="Før en bygning rives ned, skal de miljøfarlige stoffer kortlægges. Vi screener bygningen, så myndighedskrav overholdes, og affaldet kan håndteres korrekt."
+    image="case-industri-hal-foer"
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Kortlægning før nedrivning</span>
+        <h2>Styr på stofferne <span class="accent-text">før arbejdet går i gang</span></h2>
+        <p>En miljøscreening viser, hvilke materialer der indeholder farlige stoffer, og hvor de sidder. Det er grundlaget for en sikker sanering og korrekt håndtering af affaldet – og for at få opgaven godkendt hos kommunen.</p>
+        <Checklist single items={[
+          'Screening for asbest, PCB, bly, tungmetaller, PAH og klorparaffiner',
+          'Klorid- og sulfatanalyser',
+          'Detaljeret rapport, som kan bruges til myndighedsgodkendelse',
+          'Grundlag for sanering og korrekt bortskaffelse',
+        ]} />
+      </div>
+      <div class="reveal reveal-d1">
+        <!-- TODO: skift til billeder af prøvetagning/screening, når de findes -->
+        <PhotoGrid group="miljoe" images={[
+          { src: 'case-industri-hal-foer', alt: 'Industrihal før miljøscreening og nedrivning' },
+          { src: 'nedbrydning-indvendig', alt: 'Indvendig kortlægning af bygning' },
+          { src: 'case-industri-tag-demontering', alt: 'Undersøgelse af tagkonstruktion' },
+          { src: 'nedbrydning-villa-stillads', alt: 'Ældre bygning før nedrivning' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Det screener vi for</span>
+        <h2>Miljøfarlige stoffer i bygninger</h2>
+      </div>
+      <div class="tiles">
+        {substances.map((x, i) => (
+          <div class={`tile reveal reveal-d${i % 3}`}><span class="icon-badge"><Icon name="flask" /></span><h3>{x.t}</h3><p>{x.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split reverse">
+      <div class="reveal">
+        <span class="eyebrow">Samlet løsning</span>
+        <h2>Screening, sanering og nedrivning – <span class="accent-inline">ét sted</span></h2>
+        <p>Når screeningen er på plads, kan vi også stå for saneringen og selve nedrivningen. Du får én samarbejdspartner gennem hele forløbet og slipper for at koordinere mellem flere firmaer.</p>
+        <p>Kontakt {company.contactPerson} – så finder vi ud af, hvad din opgave kræver.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="/indhent-tilbud/">Få et tilbud</a>
+          <a class="link-arrow" href="/nedbrydning/">Læs om nedbrydning <Icon name="arrow" /></a>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="miljoe-2" images={[
+          { src: 'asbest-tag-aabnet', alt: 'Sanering af tag' },
+          { src: 'case-industri-grab', alt: 'Nedrivning efter screening' },
+          { src: 'plads-beton-laesser', alt: 'Sortering af materialer' },
+          { src: 'case-industri-ryddet', alt: 'Ryddet areal' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Skal din bygning screenes?" />
+</Base>

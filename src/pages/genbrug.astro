@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Img from '../components/Img.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Checklist from '../components/Checklist.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company } from '../data/site';
+
+const crumbs = [{ name: 'Genbrug', href: '/genbrug/' }];
+---
+<Base
+  title="Genbrug af byggematerialer fra nedrivning"
+  description="Legaards sorterer materialer fra egne nedrivningsopgaver og sælger dem videre. Mindre affald, sparede ressourcer og kvalitetsmaterialer via Legaards Genbrugs salg."
+  image="plads-beton-laesser"
+  breadcrumbs={crumbs}
+>
+  <PageHero
+    title="Genbrug"
+    accent="nedrivning med fokus på bæredygtighed"
+    lead="Materialer fra vores egne opgaver sorteres og sælges videre, så de får nyt liv i stedet for at ende på lossepladsen."
+    image="plads-beton-laesser"
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Bæredygtig nedrivning</span>
+        <h2>Nyt liv <span class="accent-text">til gamle materialer</span></h2>
+        <p>Når vi river ned, sorterer vi materialerne undervejs. Det, der kan bruges igen, bliver sat til side og solgt videre. Det giver mindre affald, sparer ressourcer og støtter den grønne omstilling.</p>
+        <Checklist items={[
+          'Mindre affald til deponi',
+          'Sparede ressourcer',
+          'Støtter den grønne omstilling',
+          'Ofte en billigere nedrivning',
+        ]} />
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="genbrug" images={[
+          { src: 'plads-beton-laesser', alt: 'Sorteret beton klar til genbrug' },
+          { src: 'maskine-sorteringsgrab', alt: 'Sortering med sorteringsgrab' },
+          { src: 'plads-knuser-gravemaskine', alt: 'Knusning af beton til genbrug' },
+          { src: 'case-landbrug-nedrivning', alt: 'Sortering af materialer på nedrivningsgrund' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Legaards Genbrugs salg</span>
+        <h2>Find kvalitetsmaterialer til dit projekt</h2>
+        <p style="color:hsl(210 20% 85%)">Vi ønsker at gøre det nemt for interesserede at finde kvalitetsmaterialer til deres projekter. Gennem vores Facebook-side "Legaards Genbrugs salg" tilbyder vi en bred vifte af genbrugte materialer fra vores nedrivningsprojekter.</p>
+        <p style="color:hsl(210 20% 85%)">Her kan du finde alt fra byggematerialer til unikke genstande, der kan genbruges i nye sammenhænge. Ved at vælge genbrugsmaterialer bidrager du til en mere bæredygtig fremtid og får samtidig adgang til produkter af høj kvalitet.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href={company.facebookGenbrug} target="_blank" rel="noopener"><Icon name="facebook" />Se mere her</a>
+          <a class="btn btn-ghost-light" href="/koeb-materialer/">Knuste materialer <Icon name="arrow" /></a>
+        </div>
+      </div>
+      <div class="photo-feature reveal reveal-d1">
+        <img src="/img/genbrug-isoleringsplader-800.webp" width="515" height="543" alt="Isoleringsplader fra nedrivning klar til genbrug" loading="lazy" style="aspect-ratio:auto;max-width:460px;margin-inline:auto" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Genbrugspladsen</span>
+        <h2>Aflever eller køb materialer</h2>
+        <p>På vores plads ved {company.city} tager vi imod sorteret beton, tegl og jern – og sælger knuste materialer til bundsikring og opfyldning.</p>
+      </div>
+      <div class="grid grid-2">
+        <a class="card service-card reveal" href="/modtagerplads/">
+          <div class="card-img"><Img name="plads-lastbil-beton" alt="Aflevering af beton på modtagerpladsen" /></div>
+          <div class="card-body"><span class="icon-badge"><Icon name="truck" /></span><h3>Aflever materialer</h3><p>Se hvad vi modtager, og hvordan materialerne skal være sorteret.</p><span class="link-arrow">Modtagerplads <Icon name="arrow" /></span></div>
+        </a>
+        <a class="card service-card reveal reveal-d1" href="/koeb-materialer/">
+          <div class="card-img"><Img name="materiale-knust-beton-bunke" alt="Bunke af knust beton" /></div>
+          <div class="card-body"><span class="icon-badge"><Icon name="layers" /></span><h3>Køb materialer</h3><p>Knust beton, knust tegl og blandede materialer – leveret eller afhentet.</p><span class="link-arrow">Køb materialer <Icon name="arrow" /></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

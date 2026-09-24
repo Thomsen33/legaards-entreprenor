@@ -1,0 +1,36 @@
+---
+import Icon from './Icon.astro';
+import { company } from '../data/site';
+// TODO: sæt endpoint (fx Make-webhook-URL), når modtageren er besluttet. Tom = åbner mailprogram.
+const ENDPOINT = '';
+interface Props { heading?: string; intro?: string; subject?: boolean; compact?: boolean; defaultSubject?: string }
+const { heading = 'Kontakt os i dag', intro = 'Udfyld formularen, så kontakter vi dig hurtigt.', subject = true, compact = false, defaultSubject = '' } = Astro.props;
+const subjects = ['Nedbrydning', 'Asbest', 'Miljørapport', 'Anlæg', 'Genbrug', 'Aflever materialer', 'Køb materialer', 'Andet'];
+---
+<form class="form" data-lead-form data-endpoint={ENDPOINT} data-mailto={company.email} novalidate={false}>
+  {heading && <h2>{heading}</h2>}
+  {intro && <p>{intro}</p>}
+  <div class="row">
+    <label>Navn *<input name="navn" required autocomplete="name" /></label>
+    <label>Telefon *<input name="telefon" type="tel" required autocomplete="tel" /></label>
+  </div>
+  <label>E-mail<input name="email" type="email" autocomplete="email" /></label>
+  {subject && (
+    <label>Hvad drejer det sig om?
+      <select name="emne">
+        <option value="">Vælg emne</option>
+        {subjects.map((s) => <option selected={s === defaultSubject}>{s}</option>)}
+      </select>
+    </label>
+  )}
+  {!compact && <label>Adresse på opgaven<input name="adresse" autocomplete="street-address" /></label>}
+  <label>Besked *<textarea name="besked" required placeholder="Fortæl kort om opgaven – fx bygningstype, størrelse og tidsplan"></textarea></label>
+  <label class="hp" aria-hidden="true">Hjemmeside<input name="website" tabindex="-1" autocomplete="off" /></label>
+  <button class="btn btn-accent" type="submit">Få et godt tilbud <Icon name="send" /></button>
+  <p class="form-success" role="status">Tak for din henvendelse – vi vender tilbage hurtigst muligt.</p>
+  <p class="form-note">Uforpligtende. Vi bruger kun dine oplysninger til at besvare henvendelsen.</p>
+  <div class="form-contacts">
+    <a href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
+    <a href={`mailto:${company.email}`}><Icon name="mail" />{company.email}</a>
+  </div>
+</form>

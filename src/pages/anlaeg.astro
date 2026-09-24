@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Checklist from '../components/Checklist.astro';
+import Icon from '../components/Icon.astro';
+import CaseGrid from '../components/CaseGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company } from '../data/site';
+import { cases } from '../data/cases';
+
+const crumbs = [{ name: 'Anlæg', href: '/anlaeg/' }];
+const tasks = [
+  { icon: 'layers', t: 'Sandpuder', d: 'Klar til støbning af fundament og gulv.' },
+  { icon: 'truck', t: 'P-pladser, veje og markveje', d: 'Opbygning med bundsikring og bærelag.' },
+  { icon: 'shovel', t: 'Udgravning', d: 'Til fundamenter, kældre og ledninger.' },
+  { icon: 'layers', t: 'Terrænregulering', d: 'Planering og tilpasning af terræn.' },
+  { icon: 'building', t: 'Byggemodning', d: 'Forsyningsledninger, veje og pladser.' },
+  { icon: 'recycle', t: 'Jordtransport', d: 'Og miljøkorrekt bortskaffelse af jord.' },
+];
+---
+<Base
+  title="Anlæg – udgravning, sandpuder, veje og byggemodning"
+  description={`Anlægsarbejde med gravemaskiner fra ${company.machinesTons}: sandpuder, P-pladser, veje, markveje, udgravning, terrænregulering og byggemodning. Legaards, Syddanmark.`}
+  image="anlaeg-byggemodning"
+  breadcrumbs={crumbs}
+>
+  <PageHero
+    title="Anlæg"
+    accent={`med gravemaskiner fra ${company.machinesTons}`}
+    lead="Sandpuder, P-pladser, veje og markveje, udgravning og byggemodning – og alt det andet arbejde, der dukker op undervejs."
+    image="anlaeg-byggemodning"
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Jord- og anlægsarbejde</span>
+        <h2>Vi gør grunden klar <span class="accent-text">til det nye</span></h2>
+        <p>Når bygningen er væk – eller grunden skal bruges til noget nyt – står vi klar med maskiner og folk. Vi tager både den lille sandpude til carporten og den store byggemodning.</p>
+        <Checklist items={[
+          'Sandpuder, P-pladser, veje og markveje',
+          'Udgravning til fundamenter og kældre',
+          'Terrænregulering og planering',
+          'Byggemodning med forsyningsledninger',
+          'Jordtransport og bortskaffelse af jord',
+          'Belægning og adgangsveje',
+        ]} />
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="anlaeg" images={[
+          { src: 'anlaeg-byggemodning', alt: 'Byggemodning set oppefra' },
+          { src: 'anlaeg-sandlevering', alt: 'Levering af sand til sandpude' },
+          { src: 'anlaeg-planering-landmaaling', alt: 'Planeret areal med landmålingsudstyr' },
+          { src: 'anlaeg-udgravning-lastbil', alt: 'Udgravning med gravemaskine og lastbil' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Opgaver</span>
+        <h2>Typiske anlægsopgaver</h2>
+        <p>Står du med en opgave, der ikke er på listen? Ring alligevel – vi løser også det andet arbejde, der dukker op.</p>
+      </div>
+      <div class="tiles">
+        {tasks.map((x, i) => (
+          <div class={`tile reveal reveal-d${i % 3}`}><span class="icon-badge"><Icon name={x.icon} /></span><h3>{x.t}</h3><p>{x.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split reverse">
+      <div class="reveal">
+        <span class="eyebrow">Materialer</span>
+        <h2>Bundsikring direkte <span class="accent-inline">fra egen plads</span></h2>
+        <p>Knust beton og tegl fra vores egne opgaver kan bruges som bundsikring, bærelag og opfyldning. Det er billigere end nye materialer og godt for miljøet.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="/koeb-materialer/">Se materialer</a>
+          <a class="btn btn-outline" href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="anlaeg-2" images={[
+          { src: 'anlaeg-sandpude', alt: 'Færdig sandpude' },
+          { src: 'anlaeg-udgravning-hus', alt: 'Udgravning ved hus' },
+          { src: 'materiale-knust-beton', alt: 'Knust beton til bundsikring' },
+          { src: 'anlaeg-jordarbejde', alt: 'Jordarbejde med gravemaskine' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">Case</span><h2>Anlæg i praksis</h2></div>
+      <CaseGrid cases={cases.filter((c) => c.category === 'Anlæg')} />
+    </div>
+  </section>
+
+  <CtaBand title="Skal grunden gøres klar?" />
+</Base>

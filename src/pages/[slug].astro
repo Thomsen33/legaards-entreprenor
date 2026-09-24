@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Checklist from '../components/Checklist.astro';
+import Icon from '../components/Icon.astro';
+import Reviews from '../components/Reviews.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { cities, type City } from '../data/cities';
+import { company } from '../data/site';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({ params: { slug: city.slug }, props: { city } }));
+}
+const { city } = Astro.props as { city: City };
+const crumbs = [{ name: `Entreprenør ${city.name}`, href: `/${city.slug}/` }];
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Nedrivning, asbestsanering, miljøscreening og anlæg',
+  provider: { '@id': 'https://legaards.dk/#firma' },
+  areaServed: { '@type': 'City', name: city.name },
+};
+---
+<Base title={city.title} description={city.description} image={city.image} breadcrumbs={crumbs} schema={[serviceSchema]}>
+  <PageHero title={`Entreprenør ${city.name}`} accent="nedbrydning, asbest og anlæg" lead={city.intro} image={city.image} crumbs={crumbs} />
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Lokal entreprenør</span>
+        <h2>Entreprenør i {city.name}</h2>
+        <p>{city.local}</p>
+        <p>Vi dækker {city.name} og omegn – bl.a. {city.nearby.slice(0, -1).join(', ')} og {city.nearby.at(-1)}.</p>
+        <Checklist items={['Nedrivning og selektiv nedbrydning', 'Asbestscreening og -sanering', 'Miljørapport før nedrivning', 'Anlæg og jordarbejde', 'Genbrug af materialer', 'Én fast kontaktperson']} />
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group={`by-${city.slug}`} images={[
+          { src: city.image, alt: `Opgave udført af Legaards` },
+          { src: 'maskine-sorteringsgrab', alt: 'Gravemaskine med sorteringsgrab' },
+          { src: 'anlaeg-sandlevering', alt: 'Anlægsarbejde' },
+          { src: 'asbest-tag-udsugning', alt: 'Asbestsanering af tag' },
+        ].filter((v, i, a) => a.findIndex((x) => x.src === v.src) === i).slice(0, 4)} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Ydelser i {city.name}</span>
+        <h2>Det hjælper vi med</h2>
+        <p>Alle opgaver er forskellige. Kontakt {company.contactPerson}, så finder vi en fleksibel løsning.</p>
+      </div>
+      <ServiceCards />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Hvorfor Legaards</span>
+        <h2>Tæt på – <span class="accent-inline">og klar til at hjælpe</span></h2>
+        <p>Vi har base på {company.street} ved {company.city} og egen maskinpark med gravemaskiner fra {company.machinesTons}. Det giver kort vej til {city.name} og hurtig opstart.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="/indhent-tilbud/">Få et tilbud</a>
+          <a class="btn btn-outline" href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
+        </div>
+      </div>
+      <div class="stat-card reveal reveal-d1">
+        <h3>Ring til Christian</h3>
+        <a class="big" href={company.phoneHref}>{company.phone}</a>
+        <p style="color:hsl(210 20% 85%);margin:0">Uforpligtende snak om din opgave i {city.name}.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-alt"><Reviews /></div>
+  <CtaBand title={`Har du en opgave i ${city.name}?`} />
+</Base>

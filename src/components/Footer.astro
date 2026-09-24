@@ -1,0 +1,51 @@
+---
+import Icon from './Icon.astro';
+import { company, services } from '../data/site';
+import { cities } from '../data/cities';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo"><img src="/img/logo-legaards-hvid.png" alt="Legaards Entreprenørforretning" width="640" height="181" loading="lazy" /></a>
+        <p>Nedrivning, asbest, miljøscreening og anlæg i hele {company.region}. Sikkerhed, kvalitet og genbrug i alt, hvad vi laver.</p>
+        <div class="social">
+          <a href={company.facebook} aria-label="Legaards på Facebook" rel="noopener" target="_blank"><Icon name="facebook" /></a>
+        </div>
+      </div>
+      <div>
+        <h3>Arbejdsområder</h3>
+        <ul>
+          {services.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+          <li><a href="/modtagerplads/">Aflever materialer</a></li>
+          <li><a href="/koeb-materialer/">Køb materialer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li><a href={company.phoneHref}>{company.phone}</a></li>
+          <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
+          <li>{company.street}<br />{company.zip} {company.city}</li>
+          <li>CVR {company.cvr}</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Åbningstider</h3>
+        <ul class="footer-hours">
+          {company.hours.map((h) => <li><span>{h.days}</span><span>{h.time}</span></li>)}
+        </ul>
+        <h3 style="margin-top:28px">Vi dækker</h3>
+        <ul>
+          {cities.map((c) => <li><a href={`/${c.slug}/`}>Entreprenør {c.name}</a></li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {year} {company.name} · CVR {company.cvr}</span>
+    <span><a href="/kontakt/">Kontakt</a> · <a href="/sitemap-index.xml">Sitemap</a></span>
+  </div>
+</footer>
+<a class="mobile-call" href={company.phoneHref} aria-label={`Ring til Legaards på ${company.phone}`}><Icon name="phone" /></a>

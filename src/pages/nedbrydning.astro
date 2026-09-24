@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Checklist from '../components/Checklist.astro';
+import Steps from '../components/Steps.astro';
+import Icon from '../components/Icon.astro';
+import CaseGrid from '../components/CaseGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company } from '../data/site';
+import { cases } from '../data/cases';
+
+const crumbs = [{ name: 'Nedbrydning', href: '/nedbrydning/' }];
+const types = [
+  { icon: 'leaf', t: 'Landbrugsejendomme', d: 'Avlsbygninger, stalde, lader og siloer.' },
+  { icon: 'building', t: 'Erhverv og industri', d: 'Haller, fabrikker og kontorbygninger.' },
+  { icon: 'building', t: 'Parcel- og rækkehuse', d: 'Også i tæt bebyggede villakvarterer.' },
+  { icon: 'building', t: 'Sommer- og fritidshuse', d: 'Hurtigt, skånsomt og ryddeligt.' },
+  { icon: 'truck', t: 'Lagerhaller og værksteder', d: 'Stål-, træ- og betonkonstruktioner.' },
+  { icon: 'layers', t: 'Beton og fundamenter', d: 'Brydning og knusning af beton.' },
+];
+---
+<Base
+  title="Nedbrydning og nedrivning af bygninger i Syddanmark"
+  description="Legaards river bygninger ned i alle størrelser – landbrug, erhverv, parcelhuse og sommerhuse. Miljøscreening, sanering, sortering og genbrug. Få et tilbud."
+  image="case-industri-oversigt"
+  breadcrumbs={crumbs}
+>
+  <PageHero
+    title="Nedbrydning"
+    accent="af bygninger i alle størrelser"
+    lead="Nedrivning er vores kerneopgave. Vi håndterer hele forløbet – fra besigtigelse og miljøscreening til nedrivning, sortering og genbrug af materialerne."
+    image="case-industri-oversigt"
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Hvad vi tilbyder</span>
+        <h2>Sikker nedrivning <span class="accent-text">med fokus på genbrug</span></h2>
+        <p>Vi river ned selektivt, så mest muligt af materialerne kan bruges igen. Farlige materialer bliver fundet og håndteret, før nedrivningen går i gang – og du får dokumentation for det hele.</p>
+        <Checklist items={[
+          'Nedrivning af bygninger i alle størrelser',
+          'Selektiv nedbrydning',
+          'Miljøscreening før nedrivning',
+          'Sikker håndtering af farlige materialer',
+          'Sortering og bortskaffelse af affald',
+          'Dokumentation og rapportering',
+        ]} />
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="nedbrydning" images={[
+          { src: 'case-industri-grab', alt: 'Gravemaskine med grab river industrihal ned' },
+          { src: 'nedbrydning-villa-container', alt: 'Nedrivning af villa' },
+          { src: 'nedbrydning-erhverv-facade', alt: 'Nedrivning af erhvervsbygning' },
+          { src: 'nedbrydning-hus-tag', alt: 'Tag på murstenshus rives ned' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Bygningstyper</span>
+        <h2>Vi river alt ned – store som små</h2>
+      </div>
+      <div class="tiles">
+        {types.map((x, i) => (
+          <div class={`tile reveal reveal-d${i % 3}`}><span class="icon-badge"><Icon name={x.icon} /></span><h3>{x.t}</h3><p>{x.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sådan foregår det</span>
+        <h2>Fra besigtigelse til genbrug</h2>
+      </div>
+      <Steps steps={[
+        { title: 'Besigtigelse', text: 'Bygningen gennemgås, og der lægges en plan for opgaven.' },
+        { title: 'Miljøscreening', text: 'Der screenes for asbest, PCB, bly og andre stoffer.' },
+        { title: 'Sanering', text: 'Miljøfarlige materialer fjernes forsvarligt, før nedrivningen begynder.' },
+        { title: 'Nedbrydning', text: 'Arbejdet udføres med moderne maskiner og erfarne folk.' },
+        { title: 'Sortering og genbrug', text: 'Materialerne sorteres, så mest muligt kan bruges igen.' },
+      ]} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split reverse">
+      <div class="reveal">
+        <span class="eyebrow">Hvorfor vælge Legaards</span>
+        <h2>Sikkerhed først – <span class="accent-inline">og genbrug der kan betale sig</span></h2>
+        <p>Sikkerheden kommer først, og vores medarbejdere er uddannet til opgaven. Vi genbruger så meget som muligt, og det gør ofte opgaven billigere for dig.</p>
+        <p>Maskinparken tæller gravemaskiner fra {company.machinesTons} og specialudstyr til nedrivning – så vi kan tage både den lille og den store opgave.</p>
+        <p>Alle opgaver er forskellige. Kontakt {company.contactPerson}, så finder vi en fleksibel løsning, der passer til dig.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="/indhent-tilbud/">Få et tilbud</a>
+          <a class="btn btn-outline" href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <PhotoGrid group="maskiner" images={[
+          { src: 'maskine-sorteringsgrab', alt: 'Gravemaskine med sorteringsgrab' },
+          { src: 'maskine-komatsu-pc290', alt: 'Komatsu PC290LC gravemaskine' },
+          { src: 'case-industri-nedrivning', alt: 'Nedrivning med gravemaskine' },
+          { src: 'nedbrydning-betonbrud', alt: 'Brud af betonfundament' },
+        ]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">Cases</span><h2>Udvalgte nedrivningsopgaver</h2></div>
+      <CaseGrid cases={cases.filter((c) => c.category === 'Nedbrydning')} />
+    </div>
+  </section>
+
+  <CtaBand title="Skal du have revet noget ned?" />
+</Base>
