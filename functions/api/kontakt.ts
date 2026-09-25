@@ -96,7 +96,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         responseTimeoutMs: 15000,
       },
       {
-        from: { name: 'Legaards hjemmeside', email: env.SMTP_USER },
+        from: { name: 'Ny henvendelse - Legaards.dk', email: env.SMTP_USER },
         to: env.MAIL_TO,
         reply: email ? { name: navn, email } : undefined,
         subject: `Ny henvendelse${emne ? `: ${emne}` : ''} – ${navn}`,
