@@ -499,4 +499,6 @@ body.drawer-open { overflow: hidden; }
 .form-error { display: none; background: hsl(0 70% 52% / .08); border: 1px solid hsl(0 70% 52% / .35); color: hsl(0 60% 38%); border-radius: 8px; padding: 14px; margin: 0; }
 .form.failed .form-error { display: block; }
 .form.sent .form-note { display: none; }
-.cf-turnstile { min-height: 65px; }
+/* Turnstile kører usynligt og vises kun, hvis Cloudflare er i tvivl */
+.cf-turnstile { margin-bottom: -14px; }
+.cf-turnstile.show { margin-bottom: 0; }
