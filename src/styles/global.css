@@ -494,3 +494,4 @@ body.drawer-open { overflow: hidden; }
 .member .info small { color: var(--muted-fg); font-size: .92rem; }
 .member .info a { display: inline-flex; gap: 6px; align-items: center; margin-top: 8px; font-size: .92rem; color: var(--accent-dark); text-decoration: none; font-weight: 600; }
 .member .info svg { width: 15px; height: 15px; }
+.form-note { font-size: .82rem; color: var(--muted-fg); text-align: center; margin: 2px 0 0; } .form-note a { color: inherit; }

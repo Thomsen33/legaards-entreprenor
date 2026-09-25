@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import { company } from '../data/site';
+// TODO: bekræft databehandlere (mailtjeneste til formularen) og opbevaringsperiode med kunden før lancering.
+const updated = '25. september 2026';
+const crumbs = [{ name: 'Privatlivspolitik', href: '/privatlivspolitik/' }];
+---
+<Base title="Privatlivspolitik" description="Sådan behandler Legaards Entreprenørforretning ApS dine personoplysninger, når du kontakter os via hjemmesiden, telefon eller mail." breadcrumbs={crumbs}>
+  <section class="section">
+    <div class="container prose">
+      <nav class="breadcrumbs" aria-label="Brødkrummer" style="color:var(--muted-fg)"><a href="/" style="color:var(--muted-fg)">Forside</a><span>/</span>Privatlivspolitik</nav>
+      <h1>Privatlivspolitik</h1>
+      <p><em>Senest opdateret: {updated}</em></p>
+
+      <h2>Dataansvarlig</h2>
+      <p>Legaards Entreprenørforretning ApS<br />{company.street}, {company.zip} {company.city}<br />CVR {company.cvr}<br />Telefon: <a href={company.phoneHref}>{company.phone}</a> · E-mail: <a href={`mailto:${company.email}`}>{company.email}</a></p>
+      <p>Har du spørgsmål til, hvordan vi behandler dine oplysninger, er du velkommen til at kontakte os.</p>
+
+      <h2>Hvilke oplysninger behandler vi?</h2>
+      <p>Når du kontakter os via formularen på hjemmesiden, behandler vi de oplysninger, du selv skriver: navn, telefonnummer, e-mail, eventuel adresse på opgaven, emne og din besked. Kontakter du os på telefon eller mail, behandler vi de oplysninger, du giver os dér.</p>
+      <p>Vi beder ikke om følsomme oplysninger. Skriv derfor ikke CPR-nummer eller helbredsoplysninger i beskeden.</p>
+
+      <h2>Hvorfor behandler vi dem?</h2>
+      <p>Vi bruger oplysningerne til at besvare din henvendelse, give dig et tilbud og – hvis du bliver kunde – til at planlægge og udføre opgaven og fakturere den.</p>
+
+      <h2>Retsgrundlag</h2>
+      <ul>
+        <li>Behandlingen er nødvendig for at kunne give dig et tilbud eller indgå en aftale med dig (databeskyttelsesforordningens art. 6, stk. 1, litra b).</li>
+        <li>Vores legitime interesse i at besvare henvendelser og drive vores virksomhed (art. 6, stk. 1, litra f).</li>
+        <li>Når vi opbevarer regnskabsmateriale, sker det for at overholde bogføringsloven (art. 6, stk. 1, litra c).</li>
+      </ul>
+
+      <h2>Hvem videregiver vi oplysningerne til?</h2>
+      <p>Vi sælger aldrig dine oplysninger. Vi bruger nogle få leverandører (databehandlere), der hjælper os med at drive hjemmesiden og vores e-mail:</p>
+      <ul>
+        <li><strong>Cloudflare</strong> – hosting af hjemmesiden og spambeskyttelse af formularen (Cloudflare Turnstile).</li>
+        <li><strong>Mailtjeneste</strong> – videresender din henvendelse fra formularen som e-mail til os. Oplysningerne gemmes ikke på hjemmesiden.</li>
+        <li><strong>Simply.com</strong> – vores e-mailudbyder.</li>
+      </ul>
+      <p>Behandles oplysninger uden for EU/EØS, sker det på et lovligt overførselsgrundlag, fx EU-Kommissionens standardkontraktbestemmelser eller EU-US Data Privacy Framework.</p>
+
+      <h2>Hvor længe gemmer vi oplysningerne?</h2>
+      <p>Henvendelser, der ikke fører til en opgave, sletter vi senest 12 måneder efter, at dialogen er afsluttet. Bliver du kunde, gemmer vi oplysningerne, så længe det er nødvendigt for opgaven, og regnskabsmateriale i 5 år efter regnskabsårets udløb, som bogføringsloven kræver.</p>
+
+      <h2>Cookies og statistik</h2>
+      <p>Hjemmesiden bruger ikke cookies til statistik eller markedsføring. Vi kan bruge cookiefri statistik, der tæller besøg uden at genkende dig. Spambeskyttelsen i formularen behandler tekniske oplysninger som IP-adresse og browser for at skelne mennesker fra robotter.</p>
+      <p>Klikker du på links til fx Facebook eller Google Maps, gælder disse tjenesters egne privatlivspolitikker.</p>
+
+      <h2>Dine rettigheder</h2>
+      <p>Du har ret til at få indsigt i de oplysninger, vi har om dig, og til at få dem rettet eller slettet. Du kan også gøre indsigelse mod behandlingen, få den begrænset og få udleveret dine oplysninger (dataportabilitet). Kontakt os på <a href={`mailto:${company.email}`}>{company.email}</a>, så svarer vi hurtigst muligt og senest inden for en måned.</p>
+
+      <h2>Klage</h2>
+      <p>Er du utilfreds med vores behandling af dine oplysninger, kan du klage til Datatilsynet, Carl Jacobsens Vej 35, 2500 Valby – <a href="https://www.datatilsynet.dk" rel="noopener" target="_blank">datatilsynet.dk</a>.</p>
+    </div>
+  </section>
+</Base>
