@@ -6,7 +6,7 @@
 /entreprenoer-soenderborg/  /nedrivning-soenderborg/  301
 /entreprenoer-vojens/  /nedrivning-vojens/  301
 # Sider med samme URL (/nedbrydning/, /asbest/ osv.) behøver ingen redirect.
-/reference/isolering-af-tag-samt-vindue-opsaetning-og-lysindfald/  /cases/  301
+/reference/isolering-af-tag-samt-vindue-opsaetning-og-lysindfald/  /nedrivning-middelfart/  301
 /reference/*          /cases/        301
 /hello-world/         /              301
 /category/*           /              301
@@ -16,6 +16,13 @@
 /sitemap_index.xml    /sitemap-index.xml  301
 /page-sitemap.xml     /sitemap-index.xml  301
 /post-sitemap.xml     /sitemap-index.xml  301
+/udtalelse-sitemap.xml  /sitemap-index.xml  301
+/category-sitemap.xml  /sitemap-index.xml  301
+/kategori-sitemap.xml  /sitemap-index.xml  301
+/author-sitemap.xml   /sitemap-index.xml  301
+/anlaeg/195-revision-v1/  /anlaeg/  301
+/feed/                /              301
+/comments/feed/       /              301
 /wp-admin/*           /              301
 /wp-login.php         /              301
 /forside/             /              301
