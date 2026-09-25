@@ -1,8 +1,10 @@
 ---
 import Icon from './Icon.astro';
 import { company } from '../data/site';
-// TODO: sæt endpoint (fx Make-webhook-URL), når modtageren er besluttet. Tom = åbner mailprogram.
-const ENDPOINT = '';
+// Formularen sendes til Cloudflare Pages Function i /functions/api/kontakt.ts
+const ENDPOINT = '/api/kontakt';
+// Turnstile site key (offentlig). Tom = intet spam-widget (funktionen tjekker kun, hvis TURNSTILE_SECRET er sat).
+const TURNSTILE_SITEKEY = '0x4AAAAAAFDJqQh3vHEAzpyB';
 interface Props { heading?: string; intro?: string; subject?: boolean; compact?: boolean; defaultSubject?: string; contacts?: boolean }
 const {
   heading = 'Kontakt os i dag',
@@ -37,9 +39,11 @@ const showSubject = subject && !compact;
   )}
   <label><span class="sr-only">Besked</span><textarea name="besked" required placeholder="Besked"></textarea></label>
   <label class="hp" aria-hidden="true">Hjemmeside<input name="website" tabindex="-1" autocomplete="off" /></label>
+  {TURNSTILE_SITEKEY && <div class="cf-turnstile" data-sitekey={TURNSTILE_SITEKEY} data-language="da" data-size="flexible"></div>}
   <button class="btn btn-accent" type="submit">Få et godt tilbud <Icon name="send" /></button>
   <p class="form-note">Vi bruger kun dine oplysninger til at besvare din henvendelse. Læs vores <a href="/privatlivspolitik/">privatlivspolitik</a>.</p>
   <p class="form-success" role="status">Tak for din henvendelse – vi vender tilbage hurtigst muligt.</p>
+  <p class="form-error" role="alert">Beskeden kunne ikke sendes. Prøv igen, eller ring til os på <a href={company.phoneHref}>{company.phone}</a>.</p>
   {contacts && (
     <div class="form-contacts">
       <a href={company.phoneHref}><Icon name="phone" />{company.phone}</a>
@@ -47,3 +51,4 @@ const showSubject = subject && !compact;
     </div>
   )}
 </form>
+{TURNSTILE_SITEKEY && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}

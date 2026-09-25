@@ -495,3 +495,8 @@ body.drawer-open { overflow: hidden; }
 .member .info a { display: inline-flex; gap: 6px; align-items: center; margin-top: 8px; font-size: .92rem; color: var(--accent-dark); text-decoration: none; font-weight: 600; }
 .member .info svg { width: 15px; height: 15px; }
 .form-note { font-size: .82rem; color: var(--muted-fg); text-align: center; margin: 2px 0 0; } .form-note a { color: inherit; }
+
+.form-error { display: none; background: hsl(0 70% 52% / .08); border: 1px solid hsl(0 70% 52% / .35); color: hsl(0 60% 38%); border-radius: 8px; padding: 14px; margin: 0; }
+.form.failed .form-error { display: block; }
+.form.sent .form-note { display: none; }
+.cf-turnstile { min-height: 65px; }

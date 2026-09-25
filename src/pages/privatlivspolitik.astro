@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { company } from '../data/site';
-// TODO: bekræft databehandlere (mailtjeneste til formularen) og opbevaringsperiode med kunden før lancering.
+// TODO: bekræft opbevaringsperiode med kunden før lancering.
 const updated = '25. september 2026';
 const crumbs = [{ name: 'Privatlivspolitik', href: '/privatlivspolitik/' }];
 ---
@@ -34,8 +34,7 @@ const crumbs = [{ name: 'Privatlivspolitik', href: '/privatlivspolitik/' }];
       <p>Vi sælger aldrig dine oplysninger. Vi bruger nogle få leverandører (databehandlere), der hjælper os med at drive hjemmesiden og vores e-mail:</p>
       <ul>
         <li><strong>Cloudflare</strong> – hosting af hjemmesiden og spambeskyttelse af formularen (Cloudflare Turnstile).</li>
-        <li><strong>Mailtjeneste</strong> – videresender din henvendelse fra formularen som e-mail til os. Oplysningerne gemmes ikke på hjemmesiden.</li>
-        <li><strong>Simply.com</strong> – vores e-mailudbyder.</li>
+        <li><strong>Simply.com</strong> – vores e-mailudbyder. Din henvendelse fra formularen sendes som e-mail til os via Simply og gemmes ikke på hjemmesiden.</li>
       </ul>
       <p>Behandles oplysninger uden for EU/EØS, sker det på et lovligt overførselsgrundlag, fx EU-Kommissionens standardkontraktbestemmelser eller EU-US Data Privacy Framework.</p>
 

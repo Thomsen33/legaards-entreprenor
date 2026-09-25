@@ -158,37 +158,30 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------- Formularer ----------
-   data-endpoint på <form> bestemmer hvor data sendes hen (fx en Make-webhook).
-   Er den tom, åbnes brugerens mailprogram med beskeden udfyldt, så ingen henvendelser går tabt. */
+   Sendes som JSON til data-endpoint (Cloudflare Pages Function /api/kontakt). */
 $$<HTMLFormElement>('form[data-lead-form]').forEach((form) => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
-    if (data.website) return; // honeypot
-    delete data.website;
     data.side = location.pathname;
-    const endpoint = form.dataset.endpoint;
     const btn = $<HTMLButtonElement>('button[type="submit"]', form);
-    if (endpoint) {
-      try {
-        btn && (btn.disabled = true);
-        const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-        if (!res.ok) throw new Error(String(res.status));
-        form.classList.add('sent');
-        form.reset();
-      } catch {
-        mailFallback(form, data);
-      } finally {
-        btn && (btn.disabled = false);
-      }
-    } else {
-      mailFallback(form, data);
+    form.classList.remove('sent', 'failed');
+    if (btn) { btn.disabled = true; btn.dataset.label = btn.innerHTML; btn.textContent = 'Sender…'; }
+    try {
+      const res = await fetch(form.dataset.endpoint || '/api/kontakt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const out = await res.json().catch(() => ({ ok: false }));
+      if (!res.ok || !out.ok) throw new Error(out.error || String(res.status));
+      form.classList.add('sent');
+      form.reset();
+    } catch {
+      form.classList.add('failed');
+    } finally {
+      if (btn) { btn.disabled = false; btn.innerHTML = btn.dataset.label || btn.innerHTML; }
+      (window as any).turnstile?.reset?.($('.cf-turnstile', form));
     }
   });
 });
-function mailFallback(form: HTMLFormElement, data: Record<string, string>) {
-  const to = form.dataset.mailto || 'mail@legaards.dk';
-  const subject = `Henvendelse fra hjemmesiden${data.emne ? ` – ${data.emne}` : ''}`;
-  const body = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `${k[0].toUpperCase() + k.slice(1)}: ${v}`).join('\n');
-  location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
