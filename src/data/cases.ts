@@ -13,9 +13,11 @@ export type Case = {
   facts: { label: string; value?: string }[];
   images: { src: string; alt: string }[];
   featured?: boolean;
+  /** Udkast vises ikke på sitet, før kunden har bekræftet dem */
+  draft?: boolean;
 };
 
-export const cases: Case[] = [
+const allCases: Case[] = [
   {
     // Kilde: FB-opslag om DTE i Ribe (sommer 2026)
     slug: 'nedrivning-varmehus-dte-ribe',
@@ -279,3 +281,6 @@ export const cases: Case[] = [
     featured: false,
   },
 ];
+
+// Kun bekræftede cases vises. Sæt draft: false (eller fjern linjen) når kunden har godkendt et udkast.
+export const cases = allCases.filter((c) => !c.draft);

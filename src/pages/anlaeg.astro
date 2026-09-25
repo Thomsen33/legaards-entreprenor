@@ -98,12 +98,14 @@ const tasks = [
     </div>
   </section>
 
+  {cases.some((c) => c.category === 'Anlæg') && (
   <section class="section section-alt">
     <div class="container">
       <div class="section-head reveal"><span class="eyebrow">Case</span><h2>Anlæg i praksis</h2></div>
       <CaseGrid cases={cases.filter((c) => c.category === 'Anlæg')} />
     </div>
   </section>
+  )}
 
   <Faq items={faq.anlaeg} />
 
