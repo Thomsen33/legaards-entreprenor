@@ -8,6 +8,7 @@ export const galleryCategories = ['Nedbrydning', 'Asbest', 'Anlæg', 'Genbrugspl
 
 export const gallery: GalleryImage[] = [
   ...g('Nedbrydning', [
+    ['anlaeg-belaegning-hus', 'Parcelhus før nedrivning'],
     ['case-erhvervsgrund-fundament', 'Brydning af betonfundament'],
     ['case-institution-foer', 'Muret bygning før nedrivning'],
     ['case-erhvervsgrund-udgravning', 'Fundamenter graves fri'],
@@ -60,7 +61,6 @@ export const gallery: GalleryImage[] = [
   ...g('Anlæg', [
     ['case-markvej-vej', 'Nyanlagt markvej'],
     ['case-markvej-planering', 'Planeret areal'],
-    ['anlaeg-belaegning-hus', 'Belægning ved nyt hus'],
     ['anlaeg-byggemodning', 'Byggemodning set oppefra'],
     ['anlaeg-udgravning-lastbil', 'Udgravning med gravemaskine og lastbil'],
     ['anlaeg-planering-landmaaling', 'Planeret areal med landmålingsudstyr'],
