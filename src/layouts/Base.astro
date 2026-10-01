@@ -81,6 +81,12 @@ const jsonLd = [business, ...crumbs, ...schema];
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>document.documentElement.classList.remove('no-js');</script>
     {jsonLd.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script is:inline async src="https://plausible.io/js/pa-TBEW9QidNPKozmHnBVjZO.js"></script>
+    <script is:inline>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
   </head>
   <body>
     <Header />
